@@ -1,0 +1,11 @@
+{
+  "Api": {
+    "baseUrl": "https://api.myrecharge.ng/",
+    "AuthKey": "x-auth-my-recharge-ng"
+  },
+  "JwtConfig": {
+    "UserKey": "my-recharge-auth",
+    "Secret": "MPDvY7DrRqznEYL6Cnv7HDrqAzjnRQYOG9JxEsWdcjNnQY6nGu0fG",
+    "ExpirationInMinutes": 1440
+  }
+}
