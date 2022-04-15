@@ -1004,6 +1004,10 @@ footer .links a:hover{
     margin-right: 5px;
 }
 
+.basic-multi-select{
+    background-color: #FFFFFF !important;
+}
+
 .basic-multi-select .select__control{
     border: 1px solid #121212 !important;
     height: 54px !important;
@@ -1012,10 +1016,18 @@ footer .links a:hover{
 .basic-multi-select .select__control .select__value-container{
     height: 54px !important;
 }
+/* 
+.select__menu-list{
+    background-color: #FFFFFF;
+} */
 
 .basic-multi-select .select__control input{
     height: 54px !important;
     border: none !important;
+}
+
+.select__option{
+    background-color: #FFFFFF !important;
 }
 
 .state-option img{
@@ -1037,6 +1049,7 @@ footer .links a:hover{
 
 .select__menu{
     background-color: #FFFFFF !important;
+    display: block !important;
 }
 
 .btf .form-label{
@@ -1189,6 +1202,8 @@ footer .links a:hover{
 .coupon-form input{
     width: 70%;
     border: none;
+    height: 62px;
+    outline: none;
 }
 
 .coupon-form button{
@@ -2112,6 +2127,13 @@ footer .links a:hover{
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
+}
+
+@media (max-width: 1500px) {
+    .wrapper .content .token-process{
+        padding-left: 70px;
+        padding-right: 70px;
+    }
 }
 
 @media (max-width: 769px) {

@@ -2,12 +2,16 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {formatDate, monetizeAmount} from '../../../utilities/functions.js';
 
-const Receipt = ({receipt, isTranxSuccessful, setSteps}) => {
+const Receipt = ({receipt, isTranxSuccessful, setSteps, defaultVal, error}) => {
   return (
     <div className='receipt-section'>
-        <div className={isTranxSuccessful ? "receipt-header" : "receipt-header red"}>RECHARGE {isTranxSuccessful ? "SUCCESSFUL" : "FAILED" }</div>
+        <div className={!isTranxSuccessful ? "receipt-header" : "receipt-header red"}>RECHARGE {!isTranxSuccessful ? "SUCCESSFUL" : "FAILED" }</div>
+        {!isTranxSuccessful ?
         <div className='receipt-subheader'>My Recharge Summary</div>
-        { isTranxSuccessful &&
+        :
+        <div className='receipt-subheader red'>{error.message}</div>
+        }
+        { !isTranxSuccessful &&
             <div className='receipt-detail token-detail'>
             <div className='receipt-detail-body'>
                 <div className='title'>
@@ -28,7 +32,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps}) => {
             </div>
         </div>
         }
-        { isTranxSuccessful &&
+        { !isTranxSuccessful &&
         <div className='receipt-detail meter-detail'>
             <div className='receipt-detail-body'>
                 <div className='title'>
@@ -110,7 +114,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps}) => {
                     Meter Name:
                 </div>
                 <div className='value'>
-                {receipt.meterName}
+                {defaultVal.customerName}
                 </div>
             </div>
             <div className='receipt-detail-body'>
@@ -118,7 +122,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps}) => {
                     Address:
                 </div>
                 <div className='value'>
-                {receipt.meterAddress}
+                {receipt.meterAddress ? receipt.meterAddress : "-"}
                 </div>
             </div>
         </div>

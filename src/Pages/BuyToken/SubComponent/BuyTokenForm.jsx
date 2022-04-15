@@ -45,7 +45,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
         const { name, value } = e.target;
         setTokenObject(prevState => ({
             ...prevState,
-            [name]: name === "amount" ? parseInt(value === "" ? "0" : value) : value
+            [name]: name === "amount" ? parseInt(value === "" || value < 100 ? "100" : Math.abs(value)) : value
         }));
     };
     
@@ -89,7 +89,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                                 }
                             }
                             else{
-                                alert("State Disco CAnt be Empty")
+                                alert("State Disco Cant be Empty")
                             }
                         }
                         else{

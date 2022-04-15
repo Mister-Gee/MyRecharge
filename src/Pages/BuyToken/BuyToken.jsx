@@ -14,8 +14,9 @@ const BuyToken = () => {
     const [steps, setSteps] = useState(1)
     const [pubKey, setPubKey] = useState("")
     const [stateDiscos, setStateDiscos] = useState([])
-    const [isStateDiscosLoading, setIsStateDiscosLoading] = useState(true)
+    const [isStateDiscosLoading, setIsStateDiscosLoading] = useState(false)
     const [serviceCharge, setServiceCharge] = useState(0)
+    const [error, setError] = useState("")
 
     const [responseObj, setResponseObj] = useState({})
     const [isTranxSuccessful, setIsTranxSuccessful] = useState(false)
@@ -27,7 +28,7 @@ const BuyToken = () => {
         "phoneNumber": "",
         "emailAddress": "",
         "customerName": "",
-        "amount": 0,
+        "amount": 100,
         "discountCode": "",
         "stateId": "",
         "transactionRef": "",
@@ -89,6 +90,7 @@ const BuyToken = () => {
                     steps={steps}
                     setResponseObj={setResponseObj}
                     setIsTranxSuccessful={setIsTranxSuccessful}
+                    setError={setError}
                 />
                 <div className='token-process'>
                     <Arrow 
@@ -132,8 +134,10 @@ const BuyToken = () => {
                     steps === 4 &&
                     <Receipt 
                         receipt={responseObj}
+                        defaultVal={tokenObject}
                         isTranxSuccessful={isTranxSuccessful}
                         setSteps={setSteps}
+                        error={error}
                     />
                     }
                 </div>

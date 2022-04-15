@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import { Modal } from 'react-bootstrap';
 import BounceLoader from "react-spinners/BounceLoader";
 import { recharge_meter } from '../../../Services/rechargeService';
+import { serviceError } from '../../../utilities/functions';
 
 const PaymentProcessingModal = (props) => {
 
@@ -19,7 +20,7 @@ const PaymentProcessingModal = (props) => {
               }
             }
             catch(err){
-              console.log(err)
+              serviceError(err, props.setError, props.setIsTranxSuccessful)
             }
             finally{
               props.setSteps(4)
