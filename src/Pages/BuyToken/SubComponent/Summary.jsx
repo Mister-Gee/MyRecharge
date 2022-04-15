@@ -5,12 +5,11 @@ import { Spinner } from 'react-bootstrap';
 import {usePaystackPayment} from 'react-paystack';
 
 
-const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey}) => {
-    const [serviceCharge, setServiceCharge] = useState(0)
+const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey, serviceCharge, setServiceCharge}) => {
+    
     const [discount, setDiscount] = useState(0)
 
     const [isCodeApplying, setIsCodeApplying] = useState(false)
-
 
     const handleChange = e => {
         const { value } = e.target;
@@ -30,7 +29,7 @@ const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey})
                 }
                 const res = await recharge_discount(discountDTO)
                 if(res.status === 200){
-                    setServiceCharge(res.data.response.serviceCharge)
+                    // setServiceCharge(res.data.response.serviceCharge)
                     setDiscount(res.data.response.discount)
                     setTokenObject(prevState => ({
                         ...prevState,
@@ -52,7 +51,7 @@ const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey})
     const config = {
         reference: (new Date()).getTime().toString(),
         email: tokenObject.emailAddress,
-        amount: tokenObject.amount * 100,
+        amount: (serviceCharge + tokenObject.amount - discount) * 100,
         publicKey: pubKey,
     };
 
@@ -145,7 +144,7 @@ const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey})
         </div>
         <div className='summary-btn'>
             <button className='btf-btn'  type="button" onClick={() => initializePayment(onPaymentSuccess, onPaymentClose)}>
-                Payment NGN {monetizeAmount(tokenObject.amount)}
+                Payment NGN {monetizeAmount(tokenObject.amount + serviceCharge)}
             </button>
             <span className='edit-summary-btn' onClick={() => handleNext(1)}>
                 <img src="./assets/images/edit.svg" alt="edit"/>

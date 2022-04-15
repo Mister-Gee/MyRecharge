@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {formatDate, monetizeAmount} from '../../../utilities/functions.js';
 
-const Receipt = ({receipt, isTranxSuccessful}) => {
+const Receipt = ({receipt, isTranxSuccessful, setSteps}) => {
   return (
     <div className='receipt-section'>
         <div className={isTranxSuccessful ? "receipt-header" : "receipt-header red"}>RECHARGE {isTranxSuccessful ? "SUCCESSFUL" : "FAILED" }</div>
@@ -129,7 +129,7 @@ const Receipt = ({receipt, isTranxSuccessful}) => {
                 <span>Print Receipt</span>
             </button>
             <span className='buy-more-btn'>
-                Want more token? Click here to <Link to="/buy-token">purchase token</Link>
+                Want more token? Click here to <Link to="/buy-token" onClick={() => setSteps(1)}>purchase token</Link>
             </span>
         </div>
     </div>

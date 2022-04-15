@@ -75,13 +75,16 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                                             ...prevState,
                                             customerName: res.data.response.customerName
                                         })); 
+                                        setTokenObject(prevState => ({
+                                            ...prevState,
+                                            customerNumber: res.data.response.customerNumber
+                                        })); 
+                                        setIsSubmitting(false)
                                         setSteps(2)
                                     }
                                 }
                                 catch(err){
                                     alert("Customer Validation Failed")
-                                }
-                                finally{
                                     setIsSubmitting(false)
                                 }
                             }

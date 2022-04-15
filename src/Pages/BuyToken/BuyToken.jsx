@@ -15,6 +15,7 @@ const BuyToken = () => {
     const [pubKey, setPubKey] = useState("")
     const [stateDiscos, setStateDiscos] = useState([])
     const [isStateDiscosLoading, setIsStateDiscosLoading] = useState(true)
+    const [serviceCharge, setServiceCharge] = useState(0)
 
     const [responseObj, setResponseObj] = useState({})
     const [isTranxSuccessful, setIsTranxSuccessful] = useState(false)
@@ -29,7 +30,8 @@ const BuyToken = () => {
         "amount": 0,
         "discountCode": "",
         "stateId": "",
-        "transactionRef": ""
+        "transactionRef": "",
+        "customerNumber": "",
     })
     
     const [modalShow, setModalShow] = useState(false)
@@ -40,6 +42,7 @@ const BuyToken = () => {
             setModalShow(true)
         }
         else{
+            setModalShow(false)
             setSteps(val)
         }
     }
@@ -49,6 +52,7 @@ const BuyToken = () => {
             try{
                 var res = await get_payment_gateway_keys()
                 setPubKey(res.data.response.publicKey)
+                setServiceCharge(res.data.response.serviceCharge)
             }
             catch(err){
                 console.log(err)
@@ -79,7 +83,7 @@ const BuyToken = () => {
             <div className='content'>
                 <PaymentProcessingModal 
                     show={modalShow}
-                    setSteps={setSteps}
+                    setSteps={handleSummarySteps}
                     setModalShow={setModalShow}
                     tokenObject={tokenObject}
                     steps={steps}
@@ -121,12 +125,15 @@ const BuyToken = () => {
                         tokenObject={tokenObject}
                         setTokenObject={setTokenObject}
                         pubKey={pubKey}
+                        serviceCharge={serviceCharge}
+                        setServiceCharge={setServiceCharge}
                     />
                     :
                     steps === 4 &&
                     <Receipt 
                         receipt={responseObj}
                         isTranxSuccessful={isTranxSuccessful}
+                        setSteps={setSteps}
                     />
                     }
                 </div>
