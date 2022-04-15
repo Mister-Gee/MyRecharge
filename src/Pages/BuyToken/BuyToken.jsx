@@ -24,7 +24,7 @@ const BuyToken = () => {
     // Form State
     const [tokenObject, setTokenObject] = useState({
         "meterNo": "",
-        "meterType": "",
+        "meterType": "prepaid",
         "phoneNumber": "",
         "emailAddress": "",
         "customerName": "",

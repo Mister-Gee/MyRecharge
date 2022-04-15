@@ -172,7 +172,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                     onChange={handleChange}
                 >
                     <option>Meter Type</option>
-                    <option value="prepaid">Prepaid</option>
+                    <option value="prepaid" selected>Prepaid</option>
                     <option value="postpaid">Postpaid</option>
                 </Form.Select>
             </Form.Group>

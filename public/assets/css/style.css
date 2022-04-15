@@ -2136,6 +2136,13 @@ footer .links a:hover{
     }
 }
 
+@media (max-width: 1024px) {
+    .wrapper .content .token-process{
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
 @media (max-width: 769px) {
     .side-nav{
         display: none;
@@ -2146,8 +2153,13 @@ footer .links a:hover{
     }
 
     .wrapper .content .token-process{
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 50px;
+        padding-right: 50px;
+        justify-content: space-around;
+    }
+
+    .wrapper .content .token-process .arrow-container{
+        margin-bottom: 20px;
     }
 
     .receipt-section {
@@ -2189,9 +2201,54 @@ footer .links a:hover{
 }
 
 @media (max-width: 426px) {
-   
+   .token-form{
+       padding: 0px 20px;
+   }
+
+    .btf .form-group{
+        width: 100%;
+    }
+
+    .btf-btn{
+        font-size: 16px;
+    }
+
+    .summary-detail-body .summary-detail-pair .title{
+        font-size: 14px;
+    }
+
+    .summary-detail-body .summary-detail-pair .key{
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 321px) {
-   
+    .btf-btn{
+        font-size: 12px;
+        padding: 20px 10px;
+    }
+
+    .btf-btn{
+        font-size: 14px;
+    }
+
+    .summary-detail-body .summary-detail-pair .title{
+        font-size: 12px;
+    }
+
+    .summary-detail-body .summary-detail-pair .key{
+        font-size: 12px;
+    }
+
+    .receipt-header{
+        line-height: 35px;
+    }
+
+    .receipt-detail.meter-detail .receipt-detail-body .title{
+        font-size: 14px;
+    }
+
+    .receipt-detail.meter-detail .receipt-detail-body .value{
+        font-size: 14px;
+    }
 }
