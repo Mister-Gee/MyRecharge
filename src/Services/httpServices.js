@@ -1,5 +1,5 @@
 import axios from "axios";
-import * as config from "../config.json";
+import config from "../config.json";
 import { getUserToken } from "../utilities/userTokens";
 
 const { Api } = config;
@@ -16,11 +16,11 @@ axios.interceptors.response.use(null, (error) => {
 });
 
 // Add a request interceptor to have a header token bearer
-axios.interceptors.request.use(function (config) {
+axios.interceptors.request.use(function (configuration) {
   const bearerToken = "bearer " + getUserToken();
-  config.headers[Api.AuthKey] = bearerToken;
+  configuration.headers[Api.AuthKey] = bearerToken;
 
-  return config;
+  return configuration;
 });
 
 const http = {

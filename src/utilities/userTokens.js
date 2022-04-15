@@ -1,6 +1,5 @@
-// import Jwt from "jsonwebtoken";
 import jwt_decode from "jwt-decode";
-import * as config from "../config.json";
+import config from "../config.json";
 
 const { JwtConfig } = config;
 
@@ -15,7 +14,6 @@ export function setUserToken(token) {
 export function getUserFromLocalStorage() {
   const token = getUserToken();
   const secret = JwtConfig.Secret;
-  // let user = Jwt.decode(token, secret);
   let user = jwt_decode(token, secret);
   return user;
 }

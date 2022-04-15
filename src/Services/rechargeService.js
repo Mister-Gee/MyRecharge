@@ -1,5 +1,5 @@
 import http from "./httpServices";
-import * as config from "../config.json";
+import config from "../config.json";
 
 const { Api } = config;
 const recharge_service_url = Api.baseUrl + "myrecharge/recharge/";
