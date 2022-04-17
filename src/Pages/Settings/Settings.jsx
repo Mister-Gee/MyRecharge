@@ -3,14 +3,26 @@ import Breadcrumb from '../Components/Breadcrumb';
 import Frame from '../Components/Frame';
 import SideNav from '../Components/SideNav';
 import {Row, Col, InputGroup, FormControl, Form} from 'react-bootstrap';
+import { serviceError } from '../../utilities/functions';
+import { change_password } from '../../Services/accountService';
+import { Spinner } from 'react-bootstrap';
+import useStateManager from '../../utilities/StateManager';
+
 
 const Settings = () => {
+    
+    const stateManager = useStateManager()
+    const [isSubmitting, setIsSubmitting] = useState(false)
+    const [error, setError] = useState(false)
+    const [errorShow, setErrorShow] = useState(false)
+
     const [currentPwdState, setCurrentPwdState] = useState(true)
     const [newPwdState, setNewPwdState] = useState(true)
     const [confirmNewPwdState, setConfirmNewPwdState] = useState(true)
     const [isEdit, setIsEdit] = useState(false)
 
     // Password Checks
+    const [pwd, setPwd] = useState("")
     const [newPwd, setNewPwd] = useState("")
     const [confirmNewPwd, setConfirmNewPwd] = useState("")
 
@@ -26,7 +38,6 @@ const Settings = () => {
         
         if(newPwd.length > 4){
             setPwdLengthCheck(true)
-            console.log("Yes Lenth")
         }
         else{
             setPwdLengthCheck(false)
@@ -47,6 +58,63 @@ const Settings = () => {
             setSymbolPwdCheck(false)
         }
 
+    }
+
+    const onsubmit = async() => {
+        if(pwd !== ""){
+            if(newPwd !== ""){
+                if(confirmNewPwd !== ""){
+                    if(pwdLengthCheck){
+                        if(numberPwdCheck){
+                            if(symbolPwdCheck){
+                                if(newPwd === confirmNewPwd){
+                                    try{
+                                        setIsSubmitting(true)
+                                        const payload = {
+                                            userId: stateManager.user.userId.get(),
+                                            password: pwd,
+                                            newPassword: newPwd,
+                                            confirmNewPassword: confirmNewPwd
+                                        }
+                                        let res = await change_password(payload)
+                                        if(res.status === 200 && res.data.response !== null){
+                                            setIsSubmitting(false)
+                                            alert(res.data.message)
+                                        }
+                                        
+                                    }
+                                    catch(err){
+                                        serviceError(err, setError, setErrorShow)
+                                        alert(error)
+                                    }
+                                }
+                                else{
+                                    alert("New Password and Confirm Password does not match")
+                                }
+                            }
+                            else{
+                                alert("Password Does not Contain a Symbol")
+                            }
+                        }
+                        else{
+                            alert("Password does not contain Number")
+                        }
+                    }
+                    else{
+                        alert("New Password is Less than 5 Characters")
+                    }
+                }
+                else{
+                    alert("Confirm New Password Cant be Empty")
+                }
+            }
+            else{
+                alert("New Password cant be Empty")
+            }
+        }
+        else{
+            alert("Password Cant be Empty")
+        }
     }
 
   return (
@@ -88,6 +156,8 @@ const Settings = () => {
                                             <FormControl
                                                 placeholder="Current password"
                                                 type={currentPwdState ? "password" : "text"}
+                                                value={pwd}
+                                                onChange={(e) => setPwd(e.target.value)}
                                             />
                                              <InputGroup.Text id="pwdGroup" onClick={() => setCurrentPwdState(!currentPwdState)}>
                                                 {
@@ -209,8 +279,15 @@ const Settings = () => {
                             </Row>
                             <Row>
                                 <div className='profile-edit-btns'>
-                                    <button type="button" className='cancel-btn'>Cancel</button>
-                                    <button type="button" className='save-btn'>Save</button>
+                                    <button type="button" className='cancel-btn' onClick={() => setIsEdit(false)}>Cancel</button>
+                                    <button type="button" className='save-btn' onClick={onsubmit} disabled={isSubmitting}>
+                                    {
+                                        isSubmitting ?
+                                        <Spinner animation="border" size="sm" />
+                                        :
+                                        "Save"
+                                    }
+                                    </button>
                                 </div>
                             </Row>
                             </>

@@ -21,7 +21,7 @@ export function monetizeAmount(amount) {
 
 export function serviceError(err, setErrorMessage, setShowError) {
   if (err.response && err.response.data) {
-    setErrorMessage(err.response.data);
+    setErrorMessage(err.response.data.message);
     setShowError(true);
   } else {
     setErrorMessage("An exception occured!");

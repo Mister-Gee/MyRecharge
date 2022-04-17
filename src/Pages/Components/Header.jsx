@@ -7,7 +7,7 @@ import useStateManager from '../../utilities/StateManager';
 import { logout, getUserFromLocalStorage } from '../../utilities/userTokens';
 
 
-const Header = () => {
+const Header = ({handleLogin}) => {
     const token = getUserToken()
     const stateManager = useStateManager()
     
@@ -46,7 +46,7 @@ const Header = () => {
                {isAuth && <NavLink to="/transaction-history" className={(navData) => navData.isActive && "active-link"}>Transaction History</NavLink>}
                 <NavLink to="/faq" className={(navData) => navData.isActive && "active-link"}>FAQ</NavLink>
                 <NavLink to="/contact-us" className={(navData) => navData.isActive && "active-link"}>Contact Us</NavLink>
-               {!isAuth && <NavLink to="/register" className="primary-button btn">Register</NavLink>}
+               {!isAuth && <div className="loginBtn btn" onClick={handleLogin}>Login</div>}
                 {/* {!isAuth && <NavLink to="/buy-token" className="secondary-button btn">Buy Token</NavLink>} */}
                 {isAuth && <Dropdown className='dropdown-ml'>
                     <Dropdown.Toggle id="dropdown-basic" className="primary-button btn dropdown-btn">
@@ -61,7 +61,7 @@ const Header = () => {
                             <img src="./assets/images/lock.svg" alt="user"/>
                             <span className='dropdown-navlink'>Update Password</span>
                         </Dropdown.Item>
-                        <Dropdown.Item as={NavLink} to="/" onClick={logout} className="dropdown-links">
+                        <Dropdown.Item onClick={logout} className="dropdown-links">
                             <img src="./assets/images/log-out.svg" alt="user"/>
                             <span className='dropdown-navlink'>Logout</span>
                         </Dropdown.Item>

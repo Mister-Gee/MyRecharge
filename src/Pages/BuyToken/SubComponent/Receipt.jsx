@@ -9,7 +9,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps, defaultVal, error}) => {
         {!isTranxSuccessful ?
         <div className='receipt-subheader'>My Recharge Summary</div>
         :
-        <div className='receipt-subheader red'>{error.message}</div>
+        <div className='receipt-subheader red'>{error}</div>
         }
         { !isTranxSuccessful &&
             <div className='receipt-detail token-detail'>

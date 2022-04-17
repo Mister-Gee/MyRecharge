@@ -32,7 +32,7 @@ const Landing = () => {
                 else{
                     setIsSubmitting(true)
                     let reqBody = {
-                        "mobilePhone": phoneNumber
+                        "phoneNumber": phoneNumber
                     }
                     const res = await quick_register(reqBody);
                     if(res.status === 200){
@@ -65,8 +65,6 @@ const Landing = () => {
         }
         catch(err){
             serviceError(err, setError, setShowError)
-            setError(error)
-            setShowError(true)
             setIsSubmitting(false)
             setTimeout(() => {
                 setShowError(false)

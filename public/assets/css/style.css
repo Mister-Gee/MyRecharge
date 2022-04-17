@@ -106,6 +106,158 @@ body{
     -o-border-radius: 16px 0px 0px 16px;
 }
 
+/* Auth Modal */
+.auth-modal .modal-dialog .modal-content{
+    background: #F5FBFF;
+    border-radius: 8px;
+}
+
+.auth-modal .modal-dialog .modal-content .modal-header{
+    background: #F5FBFF;
+    border-bottom: 1px solid #00B6F0;
+    border-left: 1px solid #00B6F0;
+    box-sizing: border-box;
+    border-radius: 8px 8px 0px 0;
+    -webkit-border-radius: 8px 8px 0px 0;
+    -moz-border-radius: 8px 8px 0px 0;
+    -ms-border-radius: 8px 8px 0px 0;
+    -o-border-radius: 8px 8px 0px 0;
+}
+
+.auth-title{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #121212;
+}
+
+.auth-form label{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 38px;
+    letter-spacing: 0.2px;
+    color: #121212;
+    text-shadow: 0px 30px 40px rgba(212, 217, 232, 0.2);
+}
+
+.auth-form input{
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    box-sizing: border-box;
+    border-radius: 4px;
+    height: 60px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.2px;
+    color: #444444;
+}
+
+.auth-form .input-group-text{
+    background: #FFFFFF;
+    border: 1px solid rgba(172, 172, 172, 0.5);
+    box-sizing: border-box;
+    border-radius: 0px 4px 4px 0px;
+}
+
+.auth-form img{
+    width: 18px;
+}
+
+.auth-form .input-group-texts{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: 0.2px;
+    color: rgba(18, 18, 18, 0.8);
+    margin-left: 9px;
+
+}
+
+.auth-btn{
+    width: 100%;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+    margin-top: 40px;
+    padding: 22px 0px;
+    background: #0A2472;
+    border-radius: 4px;
+    border: none;
+}
+
+.auth-btn:hover{
+    background-color: transparent;
+    border: 1px solid #0A2472;
+    color: #0A2472;
+}
+
+.auth-additional-link{
+    margin-top: 40px; 
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    margin-bottom: 80px;
+}
+
+.auth-additional-link span{
+    color: #0A2472;
+    cursor: pointer;
+}
+
+.auth-additional-link2{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-additional-link2 span{
+    cursor: pointer;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #121212;
+}
+
+.auth-message{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 26px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    letter-spacing: 0.2px;
+    margin-top: 36px;
+    margin-bottom: 24px;
+}
+
 /* Header */
 .mobile-bar{
     display: none;
@@ -143,6 +295,32 @@ header .mr-nav-links a{
     color: #0A2472;
     margin-left: 40px;
 
+}
+
+.loginBtn{
+    background: #00B6F0 !important;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 4px !important;
+    font-family: 'Inter';
+    font-style: normal;
+    /* font-weight: 500 !important; */
+    text-align: center;
+    letter-spacing: 0.2px;
+    color: #FFFFFF !important;
+    text-shadow: 0px 30px 40px rgba(212, 217, 232, 0.2);
+    margin-left: 40px;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    -ms-border-radius: 4px !important;
+    -o-border-radius: 4px !important;
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+}
+
+.loginBtn:hover{
+    background-color: transparent !important;
+    color: #00B6F0 !important;
+    border: 1px solid #00B6F0;
 }
 
 /* Footer */
@@ -297,6 +475,8 @@ footer .links a:hover{
     margin-bottom: 24px;
 }
 
+
+
 .landing-txt-sub-header{
     font-family: 'Inter';
     font-style: normal;
@@ -316,21 +496,28 @@ footer .links a:hover{
     border: 1px solid #FFFFFF;
     box-sizing: border-box;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 16px;
-    -webkit-border-radius: 16px;
-    -moz-border-radius: 16px;
-    -ms-border-radius: 16px;
-    -o-border-radius: 16px;
+    border-radius: 4px !important;
+    -webkit-border-radius: 4px !important;
+    -moz-border-radius: 4px !important;
+    -ms-border-radius: 4px !important;
+    -o-border-radius: 4px !important;
 }
 
 .landing-txt-btn .btn{
-    height: 48px;
     border-radius: 12px;
     -webkit-border-radius: 12px;
     -moz-border-radius: 12px;
     -ms-border-radius: 12px;
     -o-border-radius: 12px;
+    padding: 15px 46px;
 }
+
+@media (max-width: 1441px) {
+    .landing-txt-header{
+        font-size: 60px
+    }
+}
+
 
 @media (max-width: 769px) {
     .landing-bg{

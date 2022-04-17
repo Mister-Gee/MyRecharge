@@ -1,26 +1,24 @@
 import React from 'react';
+import useStateManager from '../../utilities/StateManager';
 
 const ProfileDetail = () => {
+    const stateManager = useStateManager()
   return (
     <div className='content-body'>
         <div className='content-row'>
             <div className='value-key'>
                 <div className='value'>Name</div>
-                <div className='key'>Ewomazino Odhigbo</div>
-            </div>
-            <div className='value-key'>
-                <div className='value'>Preferred Name</div>
-                <div className='key'>-</div>
+                <div className='key'>{stateManager.user.fullname.get()}</div>
             </div>
         </div>
         <div className='content-row'>
             <div className='value-key'>
                 <div className='value'>Mobile Phone Number</div>
-                <div className='key'>+2347031590717</div>
+                <div className='key'>{stateManager.user.phoneNumber.get()}</div>
             </div>
             <div className='value-key'>
                 <div className='value'>Email Address</div>
-                <div className='key'>ewomazeeno@gmail.com</div>
+                <div className='key'>{stateManager.user.emailAddress.get()}</div>
             </div>
         </div>
     </div>
