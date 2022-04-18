@@ -7,6 +7,7 @@ import { serviceError } from '../../utilities/functions';
 import { change_password } from '../../Services/accountService';
 import { Spinner } from 'react-bootstrap';
 import useStateManager from '../../utilities/StateManager';
+import { setUserToken } from '../../utilities/userTokens';
 
 
 const Settings = () => {
@@ -78,6 +79,7 @@ const Settings = () => {
                                         }
                                         let res = await change_password(payload)
                                         if(res.status === 200 && res.data.response !== null){
+                                            setUserToken(res.data.response.securityToken)
                                             setIsSubmitting(false)
                                             alert(res.data.message)
                                         }

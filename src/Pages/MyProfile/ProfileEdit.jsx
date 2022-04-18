@@ -4,6 +4,7 @@ import useStateManager from '../../utilities/StateManager';
 import { serviceError } from '../../utilities/functions';
 import { customer_profile_update } from '../../Services/accountService';
 import { Spinner } from 'react-bootstrap';
+import { setUserToken } from '../../utilities/userTokens';
 
 
 const ProfileEdit = ({setIsEdit}) => {
@@ -35,12 +36,16 @@ const ProfileEdit = ({setIsEdit}) => {
                             setIsSubmitting(true)
                             let res = await customer_profile_update(userDetail)
                             if(res.status === 200 && res.data.response !== null){
-                                stateManager.user.fullname.set(userDetail.fullname)
-                                stateManager.user.emailAddress.set(userDetail.emailAddress)
-                                stateManager.user.phoneNumber.set(userDetail.mobileNumber)
+                                stateManager.user.fullname.set(res.data.response.fullname)
+                                stateManager.user.emailAddress.set(res.data.response.emailAddress)
+                                stateManager.user.phoneNumber.set(res.data.response.mobileNumber)
+                                stateManager.user.userId.set(res.data.response.userId)
 
+                                setUserToken(res.data.response.securityToken)
                                 setIsSubmitting(false)
                                 alert("User Profile Updated Succesfuly")
+                                console.log(stateManager.user.get())
+
                             }
                             
                         }
