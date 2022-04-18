@@ -28,3 +28,8 @@ export function serviceError(err, setErrorMessage, setShowError) {
     setShowError(true);
   }
 }
+
+export const handleCopy = (textToCopy) => {
+  navigator.clipboard.writeText(textToCopy)
+  alert("copied")
+}

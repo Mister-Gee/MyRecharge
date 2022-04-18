@@ -28,6 +28,8 @@ const Header = ({handleLogin}) => {
         if(token && (stateManager.user.phoneNumber.get() === null || stateManager.user.phoneNumber.get() === "")){
             let user = getUserFromLocalStorage()
             stateManager.user.phoneNumber.set(user.mobileNumber)
+            stateManager.user.userId.set(user.userId)
+            stateManager.user.emailAddress.set(user.emailAddress)
         }
     },[token])
 

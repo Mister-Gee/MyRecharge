@@ -1,8 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {formatDate, monetizeAmount} from '../../../utilities/functions.js';
+import useStateManager from '../../../utilities/StateManager.js';
 
-const Receipt = ({receipt, isTranxSuccessful, setSteps, defaultVal, error}) => {
+const Receipt = ({receipt, isTranxSuccessful, setSteps, error}) => {
+    const stateManager = useStateManager()
   return (
     <div className='receipt-section'>
         <div className={!isTranxSuccessful ? "receipt-header" : "receipt-header red"}>RECHARGE {!isTranxSuccessful ? "SUCCESSFUL" : "FAILED" }</div>
@@ -114,7 +116,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps, defaultVal, error}) => {
                     Meter Name:
                 </div>
                 <div className='value'>
-                {defaultVal.customerName}
+                {stateManager.meterName.get()}
                 </div>
             </div>
             <div className='receipt-detail-body'>
@@ -122,7 +124,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps, defaultVal, error}) => {
                     Address:
                 </div>
                 <div className='value'>
-                {receipt.meterAddress ? receipt.meterAddress : "-"}
+                {stateManager.meterAddress.get()}
                 </div>
             </div>
         </div>

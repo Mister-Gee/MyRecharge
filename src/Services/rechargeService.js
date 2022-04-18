@@ -26,3 +26,11 @@ export function recharge_discount(discount) {
 export function recharge_meter(recharge_payload) {
   return http.post(recharge_service_url + "recharge-meter", recharge_payload);
 }
+
+export function transactions(userId) {
+  return http.get(recharge_service_url + "transactions/" + userId);
+}
+
+export function meters(userId) {
+  return http.get(recharge_service_url + "meters/" + userId);
+}

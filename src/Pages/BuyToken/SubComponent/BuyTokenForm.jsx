@@ -71,14 +71,16 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
     
                                     let res = await validate_customer(payload)
                                     if(res.status === 200 && res.data.response !== null){
-                                        setTokenObject(prevState => ({
-                                            ...prevState,
-                                            customerName: res.data.response.customerName
-                                        })); 
+                                        // setTokenObject(prevState => ({
+                                        //     ...prevState,
+                                        //     customerName: res.data.response.customerName
+                                        // })); 
                                         setTokenObject(prevState => ({
                                             ...prevState,
                                             customerNumber: res.data.response.customerNumber
                                         })); 
+                                        stateManager.meterName.set(res.data.response.customerName)
+                                        stateManager.meterAddress.set(res.data.response.customerAddress)
                                         setIsSubmitting(false)
                                         setSteps(2)
                                     }

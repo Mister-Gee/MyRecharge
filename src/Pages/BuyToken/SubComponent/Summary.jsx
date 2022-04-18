@@ -3,10 +3,11 @@ import { monetizeAmount } from '../../../utilities/functions';
 import { recharge_discount } from '../../../Services/rechargeService';
 import { Spinner } from 'react-bootstrap';
 import {usePaystackPayment} from 'react-paystack';
+import useStateManager from '../../../utilities/StateManager';
 
 
 const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey, serviceCharge, setServiceCharge}) => {
-    
+    const stateManager = useStateManager()
     const [discount, setDiscount] = useState(0)
 
     const [isCodeApplying, setIsCodeApplying] = useState(false)
@@ -94,11 +95,11 @@ const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey, 
             </div>
             <div className='summary-detail-pair'>
                 <div className='title'>Meter Name:</div>
-                <div className='key'>{tokenObject.customerName === "" ? "-" : tokenObject.customerName}</div>
+                <div className='key'>{stateManager.meterName.get() === "" ? "-" : stateManager.meterName.get()}</div>
             </div>
             <div className='summary-detail-pair'>
                 <div className='title'>Address:</div>
-                <div className='key'>-</div>
+                <div className='key'>{stateManager.meterAddress.get()}</div>
             </div>
             <div className='summary-detail-pair'>
                 <div className='title'>Phone Number:</div>

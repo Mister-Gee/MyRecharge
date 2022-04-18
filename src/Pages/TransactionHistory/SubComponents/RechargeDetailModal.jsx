@@ -1,8 +1,11 @@
 import React from 'react';
 import { Modal, Table } from 'react-bootstrap';
+import { handleCopy } from '../../../utilities/functions';
+import { monetizeAmount } from '../../../utilities/functions';
 
 
 const RechargeDetailModal = (props) => {
+    const {detail} = props
   return (
     <Modal
       {...props}
@@ -51,8 +54,8 @@ const RechargeDetailModal = (props) => {
                         Token:
                     </div>
                     <div className='value'>
-                        <span>0898-0897-1488-9746-0548</span>
-                        <img src="./assets/images/copy.svg" alt="Thumbs up"/>
+                        <span>{detail.token}</span>
+                        <img src="./assets/images/copy.svg" alt="Thumbs up" onClick={() => handleCopy(detail.token)}/>
                     </div>
                 </div>
                 <div className='rdm-token-summary-container'>
@@ -60,7 +63,7 @@ const RechargeDetailModal = (props) => {
                         Number of Units:
                     </div>
                     <div className='value'>
-                        <span>131</span>
+                        <span>{detail.numberOfUnits}</span>
                     </div>
                 </div>
             </div>
@@ -77,47 +80,47 @@ const RechargeDetailModal = (props) => {
                             <td>
                                 <div className='rdm-tb-content-wrapper'>
                                     <div className='key'>Meter Number:</div>
-                                    <div className='value'>45067114830</div>
+                                    <div className='value'>{detail.meterNumber}</div>
                                 </div>
                                 <div className='rdm-tb-content-wrapper'>
                                     <div className='key'>Recharge Date:</div>
-                                    <div className='value'>Sun, 20 Mar 2022 20:14:08</div>
+                                    <div className='value'>{detail.dateTimeStamp}</div>
                                 </div>
                                 <div className='rdm-tb-content-wrapper'>
                                     <div className='key'>Transaction Reference:</div>
-                                    <div className='value'>D2540E77ED748B709D30BE03892BF3E6</div>
+                                    <div className='value'>{detail.transactionReference}</div>
                                 </div>
                                 {
                                     props.isReceiptSuccessful &&
                                     <div className='rdm-tb-content-wrapper'>
                                         <div className='key'>Receipt Number:</div>
-                                        <div className='value'>EKEDP3EMB11350562</div>
+                                        <div className='value'>{detail.receiptNumber}</div>
                                     </div>
                                 }
                             </td>
                             <td>
                                 <div className='rdm-tb-content-wrapper'>
                                     <div className='key'>Recharge Amount:</div>
-                                    <div className='value'>₦1,100.00</div>
+                                    <div className='value'>₦{monetizeAmount(detail.rechargeAmount)}</div>
                                 </div>
                                 <div className='rdm-tb-content-wrapper'>
                                     <div className='key'>Service Charge:</div>
-                                    <div className='value'>₦100.00</div>
+                                    <div className='value'>₦{monetizeAmount(detail.serviceCharge)}</div>
                                 </div>
                                 <div className='rdm-tb-content-wrapper'>
                                     <div className='key'>Discount:</div>
-                                    <div className='value'>₦0.00</div>
+                                    <div className='value'>₦{monetizeAmount(detail.discount)}</div>
                                 </div>
                                 {
                                     props.isReceiptSuccessful &&
                                     <div className='rdm-tb-content-wrapper'>
                                         <div className='key'>Debt:</div>
-                                        <div className='value'>₦0.00</div>
+                                        <div className='value'>₦{monetizeAmount(detail.debt)}</div>
                                     </div>
                                 }
                                 <div className='rdm-tb-content-wrapper'>
                                     <div className='key'>Total Amount:</div>
-                                    <div className='value'>₦1,100.00</div>
+                                    <div className='value'>₦{monetizeAmount(detail.totalAmount)}</div>
                                 </div>
                                 <div className='rebuy-btn'>
                                     <button type='button'>
@@ -130,7 +133,7 @@ const RechargeDetailModal = (props) => {
                     </tbody>
                 </Table>
             </div>
-            <div className='rdm-token-detail'>
+            {/* <div className='rdm-token-detail'>
                 <Table>
                     <thead>
                         <tr>
@@ -203,7 +206,7 @@ const RechargeDetailModal = (props) => {
                     </tbody>
                     }
                 </Table>
-            </div>
+            </div> */}
         </div>
       </Modal.Body>
     </Modal>

@@ -5,7 +5,9 @@ const state = createState({
   applicationName: "My Recharge NG",
   user: { userId: "", fullname: "", emailAddress: "", phoneNumber: "" },
   showAuthModal: false,
-  authFormState: "login"
+  authFormState: "login",
+  meterName: "",
+  meterAddress: ""
 });
 
 export default function useStateManager() {

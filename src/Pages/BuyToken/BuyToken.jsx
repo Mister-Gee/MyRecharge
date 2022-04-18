@@ -134,7 +134,6 @@ const BuyToken = () => {
                     steps === 4 &&
                     <Receipt 
                         receipt={responseObj}
-                        defaultVal={tokenObject}
                         isTranxSuccessful={isTranxSuccessful}
                         setSteps={setSteps}
                         error={error}
