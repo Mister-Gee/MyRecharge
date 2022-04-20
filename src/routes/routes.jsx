@@ -39,7 +39,7 @@ const Routes = () => {
             <Settings />
           </ProtectedRoute>
         } />
-        <Route path="/*" element={<Home />} />
+        <Route path="/*" element={!token ? <Home /> : <Navigate to="buy-token" replace/> } />
     </Switch>
   )
 }

@@ -61,7 +61,7 @@ const MobileSideNav = () => {
                 }
                 {isAuth &&
                 <NavLink to="#" className="login-btn" onClick={logout}>
-                    <img src="./assets/images/log-out.svg" alt="user"/>
+                    <span className="iconify" data-icon="ic:outline-logout"></span>
                     <span>Logout</span>
                 </NavLink>
                 }
@@ -76,28 +76,28 @@ const MobileSideNav = () => {
                 }
                 {isAuth &&
                 <NavLink to="/transaction-history">
-                    <img src="./assets/images/credit-card.svg" alt="ic" />
+                    <span className="iconify" data-icon="lucide:credit-card"></span>
                     <span>Transaction History</span>
                     <span className="iconify link-caret" data-icon="ph:caret-right"></span>
                  </NavLink>
                 }
                 {isAuth &&
                 <NavLink to="/my-meter">
-                    <img src="./assets/images/transaction-history.svg" alt="ic" />
+                    <span className="iconify" data-icon="carbon:list-dropdown" style={{transform: "rotate(180deg)"}}></span>
                     <span>My Meter</span>
                     <span className="iconify link-caret" data-icon="ph:caret-right"></span>
                  </NavLink>
                 }
                 {isAuth &&
                 <NavLink to="/profile">
-                    <img src="./assets/images/user.svg" alt="ic" />
+                    <span className="iconify" data-icon="bx:user"></span>
                     <span>My Profile</span>
                     <span className="iconify link-caret" data-icon="ph:caret-right"></span>
                  </NavLink>
                 }
                 {isAuth &&
                 <NavLink to="/settings">
-                    <img src="./assets/images/settings.svg" alt="ic" />
+                    <span className="iconify" data-icon="ci:settings"></span>
                     <span>Settings</span>
                     <span className="iconify link-caret" data-icon="ph:caret-right"></span>
                  </NavLink>

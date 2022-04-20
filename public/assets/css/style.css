@@ -2080,6 +2080,42 @@ footer .links a:hover{
     right: 10px;
 }
 
+@media (max-width: 426px) {
+    .Menu .mobile-nav-link-section{
+        padding: 20px 16px;
+    }
+    
+    .Menu .mobile-nav-link-section .mn-user img{
+        padding: 18px;
+    }
+
+    .Menu .mobile-nav-link-section .mn-authlinks, 
+    .Menu .mobile-nav-link-section .mn-navlinks {
+        margin-top: 20px;
+    }
+
+    
+    .Menu .mobile-nav-link-section .mn-authlinks .buy-token-btn,
+    .Menu .mobile-nav-link-section .mn-authlinks .login-btn{
+        padding: 10px;
+        padding-left: 19px;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    .Menu .mobile-nav-link-section .mn-navlinks a{
+        padding: 10px;
+        padding-left: 19px;
+        font-size: 14px;
+    }
+
+    .Menu .mobile-nav-link-section .mn-navlinks a .iconify{
+        margin-right: 15px;
+        font-size: 25px;
+    }
+}
+
+
 /* Verification check */
 .verification-check{
     display: flex;

@@ -59,7 +59,7 @@ const Header = ({handleLogin}) => {
                             <img src="./assets/images/user.svg" alt="user"/>
                             <span className='dropdown-navlink'>My Profile</span>
                         </Dropdown.Item>
-                        <Dropdown.Item as={NavLink} to="/setting" className="dropdown-links">
+                        <Dropdown.Item as={NavLink} to="/settings" className="dropdown-links">
                             <img src="./assets/images/lock.svg" alt="user"/>
                             <span className='dropdown-navlink'>Update Password</span>
                         </Dropdown.Item>
