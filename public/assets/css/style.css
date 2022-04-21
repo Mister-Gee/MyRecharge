@@ -26,6 +26,7 @@ body{
     font-family: 'Inter';
     text-align: center;
     margin-top: 40px;
+    height: 70vh;
 }
 
 .primary-button{
@@ -379,6 +380,13 @@ footer .links a{
 
 footer .links a:hover{
     text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    header{
+        padding: 0px 51px;
+        padding-right: 0px;
+    }
 }
 
 @media (max-width: 769px) {
@@ -1090,6 +1098,12 @@ footer .links a:hover{
     -webkit-mask: url("../images/settings.svg") no-repeat center;
 }
 
+@media (max-width: 1024px) {
+    .sidenav {
+        padding: 40px 41px 0px 51px;
+    }
+}
+
 .wrapper{
     display: flex;
     flex-direction: row;
@@ -1691,10 +1705,32 @@ footer .links a:hover{
     border: none !important;
 }
 
+@media (max-width: 1024px) {
+    .breadcrumb-section .page-title img {
+        width: 27px;
+    }
+
+    .breadcrumb-section .page-title span{
+        font-size: 27px;
+    }
+
+    .breadcrumb-section .search{
+        padding: 53px 12px 16px 0px;
+    }
+
+    .breadcrumb-section .search .input-group {
+        width: 220px;
+        height: 45px;
+    }
+}
+
+
+
 /* Table */
 
 .table-container{
     padding: 36px 20px;
+    min-height: 70vh;
 }
 
 .table-container table thead{
@@ -1761,6 +1797,23 @@ footer .links a:hover{
 .table-container table tbody tr td .iconify.delete{
     color: #FF0000;
     font-size: 20px;
+}
+
+@media (max-width: 1024px) {
+
+    .table-container table thead tr th {
+        padding: 15px 10px !important;
+        font-size: 15px;
+    }
+
+    .table-container table tbody tr td {
+        padding: 15px 10px !important;
+        font-size: 14px;
+    }
+
+    .table-container table tbody tr td button{
+        padding: 6px;
+    }
 }
 
 /* Profile/Content */
@@ -1954,6 +2007,68 @@ footer .links a:hover{
     letter-spacing: 0.2px;
     color: rgba(18, 18, 18, 0.8);
 }
+
+@media (max-width: 1024px) {
+    .content-section .content-details .content-body .content-row .value-key {
+        margin-right: 0px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    .content-section .content-details .content-body .content-row {
+        flex-wrap: wrap;
+        margin-bottom: 0px;
+    }
+
+    .content-section .content-details .content-body .content-row .value-key {
+        margin-bottom: 40px;
+    }
+
+    .content-section .content-header-wrapper .change-pwd{
+        font-size: 16px;
+        top: 5px;
+    }
+
+    #pwdGroup img{
+        width: 15px;
+    }
+
+    #pwdGroup .input-group-texts span{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 375px) {
+    .content-section .content-details .content-body .content-row .value-key .value {
+       font-size: 15px;
+    }
+
+    .content-section .content-details .content-body .content-row .value-key .key {
+        font-size: 14px;
+     }
+
+    .content-section .content-header-wrapper .change-pwd{
+        font-size: 14px;
+        top: 5px;
+    }
+
+   
+}
+
+@media (max-width: 320px) {
+    
+
+    .content-section .content-header-wrapper .change-pwd{
+        font-size: 13px;
+        top: 5px;
+    }
+
+    .content-section .content-details .content-header .edit-user{
+        font-size: 12px;
+    }
+}
+
 
 /* Mobile Nav */
 .Menu{
@@ -2495,9 +2610,88 @@ footer .links a:hover{
     .summary-detail-body .summary-detail-pair .key{
         font-size: 14px;
     }
+
+    .breadcrumb-section .page-title img {
+        width: 20px;
+    }
+
+    .breadcrumb-section .page-title span{
+        font-size: 17px;
+        top: 2px;
+    }
+
+    .breadcrumb-section .search{
+        padding: 10px 12px 16px 0px;
+    }
+
+    .breadcrumb-section .search .input-group {
+        width: 200px;
+        height: 40px;
+    }
+    
 }
 
+@media (max-width: 375px) {
+     .breadcrumb-section .page-title img {
+         width: 20px;
+     }
+ 
+     .breadcrumb-section .page-title span{
+         font-size: 15px;
+         top: 2px;
+     }
+ 
+     .breadcrumb-section .search{
+         padding: 10px 12px 16px 0px;
+     }
+ 
+     .breadcrumb-section .search .input-group {
+         width: 170px;
+         height: 35px;
+    }
+
+    .breadcrumb-section .search .input-group input {
+        height: 30px;
+    }
+
+    .breadcrumb-section .search .input-group input::placeholder {
+        font-size: 10px;
+    }
+
+    .table-container table thead tr th{
+        font-size: 12px;
+    }
+
+    .table-container table tbody tr td{
+        font-size: 11px;
+    }
+
+    .table-container table tbody tr td button{
+        font-size: 11px;
+    }
+     
+ }
+
 @media (max-width: 321px) {
+
+    .breadcrumb-section .page-title span{
+        font-size: 13px;
+        top: 2px;
+    }
+
+    .breadcrumb-section .search{
+        padding: 17px 12px 16px 0px;
+    }
+
+    .breadcrumb-section .search .input-group {
+        width: 140px;
+        height: 32px;
+   }
+
+   .breadcrumb-section .search .input-group input {
+       height: 29px;
+   }
+
     .btf-btn{
         font-size: 12px;
         padding: 20px 10px;
