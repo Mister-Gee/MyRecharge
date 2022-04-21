@@ -67,7 +67,7 @@ const TransactionHistory = () => {
                     isSearch={true}
                     searchPlaceholder="Search transactions"
                 />
-                {/* {isLoading ?
+                {isLoading ?
                 <ContentLoader />
                 :
                 transactionList.length < 1 ?
@@ -103,35 +103,7 @@ const TransactionHistory = () => {
                         </tbody>
                     </Table>
                 </div>
-                } */}
-                <div className='table-container'>
-                    <Table responsive="sm">
-                        <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Meter Number</th>
-                            <th>Amount</th>
-                            <th>Number of Units</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2022-01-14 04:33PM</td>
-                                <td>1234567898765</td>
-                                <td>₦ 10,000</td>
-                                <td>131</td>
-                                <td className= "failed" >Failed</td>
-                                <td>
-                                    <button type='button' onClick={() => handleTransactionDetails("true", {})}>
-                                        Recharge Details
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </div>
+                }
             </div>
         </div>
     </Frame>
