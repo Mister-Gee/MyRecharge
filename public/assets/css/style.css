@@ -382,6 +382,17 @@ footer .links a:hover{
     text-decoration: underline;
 }
 
+@media (max-width: 1350px) {
+    header{
+        padding-left: 50px;
+        padding-right: 0px;
+    }
+ 
+    header .logo-container img{
+        width: 300px;
+    }
+}
+
 @media (max-width: 1024px) {
     header{
         padding: 0px 51px;
@@ -2509,14 +2520,6 @@ footer .links a:hover{
 }
 
 @media (max-width: 1350px) {
-   header{
-       padding-left: 50px;
-       padding-right: 0px;
-   }
-
-   header .logo-container img{
-       width: 300px;
-   }
 
    .token-form {
         padding: 0px 20px;
@@ -2633,6 +2636,10 @@ footer .links a:hover{
     
     .breadcrumb-section .search .input-group{
         width: 300px;
+    }
+
+    .token-form {
+        padding: 0px 126px;
     }
   
 }
