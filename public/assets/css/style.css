@@ -131,7 +131,7 @@ body{
 .auth-modal .modal-dialog .modal-content .modal-header{
     background: #F5FBFF;
     border-bottom: 1px solid #00B6F0;
-    border-left: 1px solid #00B6F0;
+    /* border-left: 1px solid #00B6F0; */
     box-sizing: border-box;
     border-radius: 8px 8px 0px 0;
     -webkit-border-radius: 8px 8px 0px 0;
@@ -543,6 +543,17 @@ footer .links a:hover{
     }
 }
 
+@media (max-width: 1350px) {
+    .landing-txt-header{
+        font-size: 50px
+    }
+
+    .landing-img img{
+        width: 600px;
+    }
+}
+
+
 
 @media (max-width: 769px) {
     .landing-bg{
@@ -754,6 +765,12 @@ footer .links a:hover{
     font-feature-settings: 'salt' on, 'liga' off;
     color: #F5FBFF;
     max-width: 350px;
+}
+
+@media (max-width: 1350px) {
+    .benefits-wrapper{
+        padding: 64px 105px;
+    }
 }
 
 @media (max-width: 426px) {
@@ -2488,6 +2505,36 @@ footer .links a:hover{
     .wrapper .content .token-process{
         padding-left: 70px;
         padding-right: 70px;
+    }
+}
+
+@media (max-width: 1350px) {
+   header{
+       padding-left: 50px;
+       padding-right: 0px;
+   }
+
+   header .logo-container img{
+       width: 300px;
+   }
+
+   .token-form {
+        padding: 0px 20px;
+    }
+
+    .token-process .arrow-container img{
+        width: 190px;
+    }
+
+    .arrow-container .arrow-text {
+        font-size: 16px;
+        top: 15px;
+        left: 33px;
+    }
+
+    .content-section .content-details .content-body .content-row .value-key {
+        margin-right: 150px;
+        width: 200px;
     }
 }
 
