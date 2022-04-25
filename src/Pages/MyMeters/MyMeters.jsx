@@ -27,7 +27,6 @@ const MyMeters = () => {
                     }
                     setIsLoading(false)
                 }
-                console.log(res)
             }
             catch(err){
                 console.log(err)

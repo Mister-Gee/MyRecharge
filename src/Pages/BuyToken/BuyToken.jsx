@@ -28,7 +28,7 @@ const BuyToken = () => {
         "phoneNumber": "",
         "emailAddress": "",
         "customerName": "",
-        "amount": 100,
+        "amount": 1000,
         "discountCode": "",
         "stateId": "",
         "transactionRef": "",

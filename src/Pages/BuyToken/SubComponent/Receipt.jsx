@@ -1,19 +1,19 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {formatDate, monetizeAmount} from '../../../utilities/functions.js';
+import {handleCopy, monetizeAmount} from '../../../utilities/functions.js';
 import useStateManager from '../../../utilities/StateManager.js';
 
 const Receipt = ({receipt, isTranxSuccessful, setSteps, error}) => {
     const stateManager = useStateManager()
   return (
     <div className='receipt-section'>
-        <div className={!isTranxSuccessful ? "receipt-header" : "receipt-header red"}>RECHARGE {!isTranxSuccessful ? "SUCCESSFUL" : "FAILED" }</div>
-        {!isTranxSuccessful ?
+        <div className={isTranxSuccessful ? "receipt-header" : "receipt-header red"}>RECHARGE {isTranxSuccessful ? "SUCCESSFUL" : "FAILED" }</div>
+        {isTranxSuccessful ?
         <div className='receipt-subheader'>My Recharge Summary</div>
         :
         <div className='receipt-subheader red'>{error}</div>
         }
-        { !isTranxSuccessful &&
+        { isTranxSuccessful &&
             <div className='receipt-detail token-detail'>
             <div className='receipt-detail-body'>
                 <div className='title'>
@@ -21,7 +21,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps, error}) => {
                 </div>
                 <div className='value'>
                     <b>{receipt.token}</b>
-                    <img src="./assets/images/copy.svg" alt="copy"/>
+                    <img src="./assets/images/copy.svg" alt="copy" onClick={() => handleCopy(receipt.token)}/>
                 </div>
             </div>
             <div className='receipt-detail-body'>
@@ -34,7 +34,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps, error}) => {
             </div>
         </div>
         }
-        { !isTranxSuccessful &&
+        { isTranxSuccessful &&
         <div className='receipt-detail meter-detail'>
             <div className='receipt-detail-body'>
                 <div className='title'>
@@ -49,7 +49,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps, error}) => {
                     Recharge Date:
                 </div>
                 <div className='value'>
-                {formatDate(receipt.paymentDateTime)}
+                {receipt.paymentDateTime}
                 </div>
             </div>
             <div className='receipt-detail-body'>

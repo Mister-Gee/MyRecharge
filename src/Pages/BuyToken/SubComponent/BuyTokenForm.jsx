@@ -45,7 +45,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
         const { name, value } = e.target;
         setTokenObject(prevState => ({
             ...prevState,
-            [name]: name === "amount" ? parseInt(value === "" || value < 100 ? "100" : Math.abs(value)) : value
+            [name]: name === "amount" ? parseInt(value === "" || value < 1000 ? "1000" : Math.abs(value)) : value
         }));
     };
     
@@ -54,7 +54,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
     }
 
     const onsubmit = async() => {
-        if(tokenObject.amount !== ""){
+        if(tokenObject.amount !== "" && tokenObject.amount > 999 ){
             if(tokenObject.emailAddress !== ""){
                 if(tokenObject.meterNo !== ""){
                     if(tokenObject.meterType !== ""){
