@@ -382,7 +382,7 @@ footer .links a:hover{
     text-decoration: underline;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1372px) {
     header{
         padding-left: 50px;
         padding-right: 0px;
@@ -554,7 +554,7 @@ footer .links a:hover{
     }
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1372px) {
     .landing-txt-header{
         font-size: 50px
     }
@@ -564,6 +564,19 @@ footer .links a:hover{
     }
 }
 
+@media (max-width: 1024px) {
+    .landing-txt-header{
+        font-size: 40px
+    }
+
+    .landing-img img{
+        width: 450px;
+    }
+
+    .landing-bg .landing-bg-wrapper {
+        padding-left: 100px;
+    }
+}
 
 
 @media (max-width: 769px) {
@@ -778,7 +791,7 @@ footer .links a:hover{
     max-width: 350px;
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1372px) {
     .benefits-wrapper{
         padding: 64px 105px;
     }
@@ -2519,7 +2532,7 @@ footer .links a:hover{
     }
 }
 
-@media (max-width: 1350px) {
+@media (max-width: 1372px) {
 
    .token-form {
         padding: 0px 20px;
