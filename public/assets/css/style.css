@@ -430,7 +430,7 @@ footer .links a:hover{
 
 @media (max-width: 426px) {
     header .logo-container img{
-        width: 153px;
+        width: 220px;
     }
 
     .mobile-bar img{
@@ -2658,6 +2658,11 @@ footer .links a:hover{
 }
 
 @media (max-width: 426px) {
+    .wrapper .content .token-process{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
    .token-form{
        padding: 0px 20px;
    }
@@ -2699,6 +2704,11 @@ footer .links a:hover{
 }
 
 @media (max-width: 375px) {
+    .wrapper .content .token-process{
+        padding-left: 10px;
+        padding-right: 10px;
+        justify-content: space-around;
+    }
      .breadcrumb-section .page-title img {
          width: 20px;
      }
