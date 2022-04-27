@@ -41,7 +41,7 @@ const Receipt = ({receipt, isTranxSuccessful, setSteps, error}) => {
                     Meter Number:
                 </div>
                 <div className='value'>
-                {receipt.energyUnits}
+                {receipt.meterNo}
                 </div>
             </div>
             <div className='receipt-detail-body'>
