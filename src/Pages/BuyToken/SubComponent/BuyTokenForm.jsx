@@ -6,7 +6,6 @@ import { validate_customer } from '../../../Services/rechargeService';
 import { Spinner } from 'react-bootstrap';
 
 const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject, setTokenObject}) => {
-    const [meterForms, setMeterForms] = useState([])
     const [state, setState] = useState({})
     const [isSubmitting, setIsSubmitting] = useState(false)
 
@@ -49,8 +48,11 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
         }));
     };
     
-    const handleNewForm = () => {
-        setMeterForms([...meterForms, <div className='mb-2'><Form.Label>Meter Number</Form.Label> <Form.Control type="text" placeholder="0000-0000-0000" /></div>])
+    const handleClear = () => {
+        setTokenObject(prevState => ({
+            ...prevState,
+            meterNo: ""
+        }));
     }
 
     const onsubmit = async() => {
@@ -130,10 +132,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                         onChange={handleChange}
                         />
                 </div>
-                {meterForms.map(data => (
-                    data
-                ))}
-                <span className="add-new-form-btn" onClick={handleNewForm}>
+                <span className="add-new-form-btn" onClick={handleClear}>
                     <img src="./assets/images/plus.svg" alt="plus"/>
                     <span>Add New</span>
                 </span>
