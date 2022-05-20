@@ -68,7 +68,8 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                                         "accountType": tokenObject.meterType,
                                         "customerEmail": tokenObject.emailAddress,
                                         "customerPhone": tokenObject.phoneNumber,
-                                        "customerMeterNumber": tokenObject.meterNo
+                                        "customerMeterNumber": tokenObject.meterNo,
+                                        "stateId": tokenObject.stateId
                                     }
     
                                     let res = await validate_customer(payload)

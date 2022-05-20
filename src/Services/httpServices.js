@@ -17,8 +17,9 @@ axios.interceptors.response.use(null, (error) => {
 
 // Add a request interceptor to have a header token bearer
 axios.interceptors.request.use(function (configuration) {
-  const bearerToken = "bearer " + getUserToken();
-  configuration.headers[Api.AuthKey] = bearerToken;
+  //const bearerToken = "bearer " + getUserToken();
+  configuration.headers[Api.AuthKey] = getUserToken();
+  configuration.headers[Api.ApiKeyName] = Api.ApiKeyValue;
 
   return configuration;
 });

@@ -1,7 +1,9 @@
 {
   "Api": {
     "baseUrl": "https://api.myrecharge.ng/",
-    "AuthKey": "x-auth-my-recharge-ng"
+    "AuthKey": "x-auth-my-recharge-ng",
+    "ApiKeyName": "x-my-recharge-api-key",
+    "ApiKeyValue": "MPDvY7DrRqznEYL6Cnv7HDrqAzjnRQYOG9JxEsWdcjNnQY6nGu0fG"
   },
   "JwtConfig": {
     "UserKey": "my-recharge-auth",
