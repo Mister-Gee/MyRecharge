@@ -1,3 +1,4 @@
+import { plainAlert } from "../Pages/Components/SweetAlerts";
 export function formatDate(date) {
   if (!date) return "";
 
@@ -31,5 +32,5 @@ export function serviceError(err, setErrorMessage, setShowError) {
 
 export const handleCopy = (textToCopy) => {
   navigator.clipboard.writeText(textToCopy)
-  alert("copied")
+  plainAlert("Copied")
 }

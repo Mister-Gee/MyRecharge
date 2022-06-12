@@ -6,16 +6,16 @@ const SideNav = () => {
     <div className='sidenav'>
         <div className='nav-link-wrapper'>
             <NavLink to="/buy-token" className={(navData) => navData.isActive && "active-link active-link-border"}>
-                <span className='token-nav-icon'>
-                    <img src="./assets/images/battery-charging.svg" alt="ic" />
+                <span className='side-nav-icon'>
+                    <span className="iconify" data-icon="lucide:battery-charging"></span>
                 </span>    
                 Buy Token
             </NavLink>
         </div>
         <div className='nav-link-wrapper'>
             <NavLink to="/transaction-history" className={(navData) => navData.isActive && "active-link active-link-border"}>
-                <span className='th-nav-icon'>
-                    <img src="./assets/images/credit-card.svg" alt="ic" />
+                <span className='side-nav-icon'>
+                    <span className="iconify" data-icon="lucide:credit-card"></span>
                 </span>    
                 Transactions
             </NavLink>
@@ -30,16 +30,16 @@ const SideNav = () => {
         </div>
         <div className='nav-link-wrapper'>
             <NavLink to="/profile" className={(navData) => navData.isActive && "active-link active-link-border"}>
-                <span className='user-nav-icon'>
-                    <img src="./assets/images/user.svg" alt="ic" />
+                <span className='side-nav-icon'>
+                    <span className="iconify" data-icon="bx:user"></span>
                 </span>    
                 My Profile
             </NavLink>
         </div>
         <div className='nav-link-wrapper'>
             <NavLink to="/settings" className={(navData) => navData.isActive && "active-link active-link-border"}>
-                <span className='ss-nav-icon'>
-                    <img src="./assets/images/settings.svg" alt="ic" />
+                <span className='side-nav-icon'>
+                    <span className="iconify" data-icon="carbon:settings"></span>
                 </span>    
                 Settings
             </NavLink>

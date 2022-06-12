@@ -2,9 +2,12 @@ import React from 'react';
 import { Modal, Table } from 'react-bootstrap';
 import { handleCopy } from '../../../utilities/functions';
 import { monetizeAmount } from '../../../utilities/functions';
+import Pdf from "react-to-pdf";
+
 
 
 const RechargeDetailModal = (props) => {
+    const ref = React.createRef();
     const {detail} = props
   return (
     <Modal
@@ -12,6 +15,7 @@ const RechargeDetailModal = (props) => {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
+      ref={ref}
     >
       <Modal.Body>
         <div className='rdm-wrapper'>
@@ -24,10 +28,14 @@ const RechargeDetailModal = (props) => {
                     <span className='rdm-header-txt green'>Successful</span>
                 </div>
                 <div className='rdm-print'>
-                    <button type='button'>
-                        <span className="iconify" data-icon="ph:printer"></span>
-                        <span>Print Receipt</span>
-                    </button>
+                    <Pdf targetRef={ref} filename="receipt.pdf">
+                        {({toPdf}) => ( 
+                            <button type='button' onClick={toPdf}>
+                                <span className="iconify" data-icon="ph:printer"></span>
+                                <span>Print Receipt</span>
+                            </button> 
+                        )}
+                    </Pdf>
                 </div>
                 </>
                 :

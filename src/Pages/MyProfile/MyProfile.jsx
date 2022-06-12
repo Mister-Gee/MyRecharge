@@ -19,26 +19,28 @@ const MyProfile = () => {
                     title="My Profile"
                     isSearch={false}
                 />
-                <div className="content-section">
-                    <div className='content-details'>
-                        <div className='content-header'>
-                            <div className='profile-dp'>
-                                <img src="./assets/images/user.svg" alt="user"/>
-                            </div>
-                            {!isEdit &&
-                                <div className='edit-user' onClick={() => setIsEdit(true)}>
-                                    <span className="iconify" data-icon="clarity:note-edit-line"></span>
-                                    <span>Edit</span>
+                <div className='card'>
+                    <div className="content-section">
+                        <div className='content-details'>
+                            <div className='content-header'>
+                                <div className='profile-dp'>
+                                    <img src="./assets/images/user.svg" alt="user"/>
                                 </div>
+                                {!isEdit &&
+                                    <div className='edit-user' onClick={() => setIsEdit(true)}>
+                                        <span className="iconify" data-icon="clarity:note-edit-line"></span>
+                                        <span>Edit</span>
+                                    </div>
+                                }
+                            </div>
+                            {isEdit ? 
+                                <ProfileEdit 
+                                    setIsEdit={setIsEdit}
+                                />
+                                :
+                                <ProfileDetail />
                             }
                         </div>
-                        {isEdit ? 
-                            <ProfileEdit 
-                                setIsEdit={setIsEdit}
-                            />
-                            :
-                            <ProfileDetail />
-                        }
                     </div>
                 </div>
             </div>

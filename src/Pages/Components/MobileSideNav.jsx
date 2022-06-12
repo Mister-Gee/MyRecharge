@@ -44,33 +44,43 @@ const MobileSideNav = () => {
         </div>
         <div className="mobile-nav-link-section" onClick={closeMenu}>
             <div className="mn-user">
-                <img src="./assets/images/user.svg" alt="user"/>
+                <img src="./assets/images/user1.svg" alt="user"/>
             </div>
+            {isAuth &&
+                <div className="mn-phone">
+                    <p>{stateManager.user.get().phoneNumber}</p>
+                </div>
+            }
+            {!isAuth &&
             <div className="mn-authlinks">
-                {!isAuth &&
-                <NavLink to="#" className="login-btn" onClick={handleLogin}>
+                <NavLink to="#" className="btn-auth" onClick={handleLogin}>
                     <span className="iconify" data-icon="lucide:log-in"></span>
                     <span>Login</span>
                  </NavLink>
-                }
-                {isAuth &&
-                <NavLink to="/buy-token" className="buy-token-btn">
+                <NavLink to="/buy-token" className="btn-auth">
                     <span className="iconify" data-icon="lucide:battery-medium"></span>
                     <span>Buy Token</span>
                 </NavLink>
-                }
-                {isAuth &&
+                {/* {isAuth &&
                 <NavLink to="#" className="login-btn" onClick={logout}>
                     <span className="iconify" data-icon="ic:outline-logout"></span>
                     <span>Logout</span>
                 </NavLink>
-                }
+                } */}
             </div>
+            }
             <div className="mn-navlinks">
                 {!isAuth &&
                 <NavLink to="/">
                     <span className="iconify link-icon" data-icon="bx:home-alt"></span>
                     <span>Home</span>
+                    <span className="iconify link-caret" data-icon="ph:caret-right"></span>
+                 </NavLink>
+                }
+                {isAuth &&
+                <NavLink to="/buy-token">
+                    <span className="iconify" data-icon="lucide:battery-charging"></span>
+                    <span>Buy Token</span>
                     <span className="iconify link-caret" data-icon="ph:caret-right"></span>
                  </NavLink>
                 }

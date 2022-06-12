@@ -5,7 +5,7 @@ const HomeFooter = () => {
   return (
     <div className='home-footer'>
         <div className='company-detail'>
-            <img src='./assets/images/footer-logo.svg' alt="My Recharge"/>
+            <img class="footer-logo" src='./assets/images/footer-logo.svg' alt="My Recharge"/>
             <div className='body'>Lorem ipsum dolor amet, consectetur adipiscing elit. Eget nisl nunc quam ac sed turpis volutpat. Cursus sed massa non nisi, placerat.</div>
             <div className='social-media-link'>
                 <a href="https://instagram.com/">

@@ -4,6 +4,7 @@ import Select from 'react-select';
 import useStateManager from '../../../utilities/StateManager';
 import { validate_customer } from '../../../Services/rechargeService';
 import { Spinner } from 'react-bootstrap';
+import { errorAlert } from '../../Components/SweetAlerts';
 
 const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject, setTokenObject}) => {
     const [state, setState] = useState({})
@@ -89,32 +90,32 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                                     }
                                 }
                                 catch(err){
-                                    alert("Customer Validation Failed")
+                                    errorAlert("Customer Validation Failed")
                                     setIsSubmitting(false)
                                 }
                             }
                             else{
-                                alert("State Disco Cant be Empty")
+                                errorAlert("State Disco Cant be Empty")
                             }
                         }
                         else{
-                            alert("Phone Number cant be Empty")
+                            errorAlert("Phone Number cant be Empty")
                         }
                     }
                     else{
-                        alert("Meter Type Cant be Empty")
+                        errorAlert("Meter Type Cant be Empty")
                     }
                 }
                 else{
-                    alert("Meter Number cant be Empty")
+                    errorAlert("Meter Number cant be Empty")
                 }
             }
             else{
-                alert("Email Address Cant be Empty")
+                errorAlert("Email Address Cant be Empty")
             }
         }
         else{
-            alert("Token Amount Cant be Empty")
+            errorAlert("Token Amount Cant be Empty")
         }
     }
 
@@ -134,7 +135,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                         />
                 </div>
                 <span className="add-new-form-btn" onClick={handleClear}>
-                    <img src="./assets/images/plus.svg" alt="plus"/>
+                    <span className="iconify" data-icon="bi:plus"></span>
                     <span>Add New</span>
                 </span>
             </Form.Group>
@@ -204,7 +205,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                 />
             </Form.Group>
 
-            <Form.Group className="mb-3 form-group">
+            <Form.Group className="form-group">
                 <Form.Label>Amount to recharge meter</Form.Label>
                 <Form.Control 
                     type="text" 
@@ -216,13 +217,13 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                 />
             </Form.Group>
 
-            <Form.Group className="mb-3 form-group">
+            <Form.Group className="form-group">
                 <button className='btf-btn'  type="button" onClick={onsubmit} disabled={isSubmitting}>
                     {
                         isSubmitting ?
                         <Spinner animation="border" size="sm" />
                         :
-                        "Continue to Payment Summary"
+                        "Continue"
                     }
                 </button>
             </Form.Group>

@@ -8,6 +8,7 @@ import { change_password } from '../../Services/accountService';
 import { Spinner } from 'react-bootstrap';
 import useStateManager from '../../utilities/StateManager';
 import { setUserToken } from '../../utilities/userTokens';
+import { successAlert, errorAlert } from '../Components/SweetAlerts';
 
 
 const Settings = () => {
@@ -81,41 +82,41 @@ const Settings = () => {
                                         if(res.status === 200 && res.data.response !== null){
                                             setUserToken(res.data.response.securityToken)
                                             setIsSubmitting(false)
-                                            alert(res.data.message)
+                                            successAlert(res.data.message)
                                         }
                                         
                                     }
                                     catch(err){
                                         serviceError(err, setError, setErrorShow)
-                                        alert(error)
+                                        errorAlert(error)
                                     }
                                 }
                                 else{
-                                    alert("New Password and Confirm Password does not match")
+                                    errorAlert("New Password and Confirm Password does not match")
                                 }
                             }
                             else{
-                                alert("Password Does not Contain a Symbol")
+                                errorAlert("Password Does not Contain a Symbol")
                             }
                         }
                         else{
-                            alert("Password does not contain Number")
+                            errorAlert("Password does not contain Number")
                         }
                     }
                     else{
-                        alert("New Password is Less than 5 Characters")
+                        errorAlert("New Password is Less than 5 Characters")
                     }
                 }
                 else{
-                    alert("Confirm New Password Cant be Empty")
+                    errorAlert("Confirm New Password Cant be Empty")
                 }
             }
             else{
-                alert("New Password cant be Empty")
+                errorAlert("New Password cant be Empty")
             }
         }
         else{
-            alert("Password Cant be Empty")
+            errorAlert("Password Cant be Empty")
         }
     }
 
@@ -131,169 +132,171 @@ const Settings = () => {
                     title="Settings"
                     isSearch={false}
                 />
-                <div className="content-section">
-                    <div className='content-details'>
-                        <div className='content-header'>
-                            <div className="content-header-wrapper">
-                                <div className='profile-dp'>
-                                    <img src="./assets/images/key.svg" alt="key"/>
+                <div className='card'>
+                    <div className="content-section">
+                        <div className='content-details'>
+                            <div className='content-header'>
+                                <div className="content-header-wrapper">
+                                    <div className='profile-dp'>
+                                        <img src="./assets/images/key.svg" alt="key"/>
+                                    </div>
+                                    <div className="change-pwd">Change password</div>
                                 </div>
-                                <div className="change-pwd">Change password</div>
+                                {!isEdit &&
+                                    <div className='edit-user' onClick={() => setIsEdit(true)}>
+                                        <span className="iconify" data-icon="clarity:note-edit-line"></span>
+                                        <span>Change</span>
+                                    </div>
+                                }
                             </div>
-                            {!isEdit &&
-                                <div className='edit-user' onClick={() => setIsEdit(true)}>
-                                    <span className="iconify" data-icon="clarity:note-edit-line"></span>
-                                    <span>Change</span>
-                                </div>
-                            }
-                        </div>
-                        <div className='content-body'>
-                        {isEdit &&
-                            <>
-                            <Row>
-                                <Col lg={12}>
-                                    <div className='mb-4'>
-                                        <Form.Label>Current password</Form.Label>
-                                        <InputGroup>
-                                            <FormControl
-                                                placeholder="Current password"
-                                                type={currentPwdState ? "password" : "text"}
-                                                value={pwd}
-                                                onChange={(e) => setPwd(e.target.value)}
-                                            />
-                                             <InputGroup.Text id="pwdGroup" onClick={() => setCurrentPwdState(!currentPwdState)}>
-                                                {
-                                                    currentPwdState ?
-                                                    <img src="./assets/images/eye.svg" alt="eye"/>
-                                                    :
-                                                    <img src="./assets/images/eye-off.svg" alt="eye-off"/>
-                                                }
-                                                <span className="input-group-texts">
-                                                    {currentPwdState ?
-                                                        <span>Show</span>
+                            <div className='content-body'>
+                            {isEdit &&
+                                <>
+                                <Row>
+                                    <Col lg={12}>
+                                        <div className='mb-4'>
+                                            <Form.Label>Current password</Form.Label>
+                                            <InputGroup>
+                                                <FormControl
+                                                    placeholder="Current password"
+                                                    type={currentPwdState ? "password" : "text"}
+                                                    value={pwd}
+                                                    onChange={(e) => setPwd(e.target.value)}
+                                                />
+                                                <InputGroup.Text id="pwdGroup" onClick={() => setCurrentPwdState(!currentPwdState)}>
+                                                    {
+                                                        currentPwdState ?
+                                                        <img src="./assets/images/eye.svg" alt="eye"/>
                                                         :
-                                                        <span>Hide</span>
+                                                        <img src="./assets/images/eye-off.svg" alt="eye-off"/>
                                                     }
-                                                </span>
-                                            </InputGroup.Text>
-                                        </InputGroup>
-                                    </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col lg={12}>
-                                    <div className='mb-4'>
-                                        <Form.Label>New password</Form.Label>
-                                        <InputGroup>
-                                            <FormControl
-                                                placeholder="New password"
-                                                type={newPwdState ? "password" : "text"}
-                                                value={newPwd}
-                                                onChange={(e) => handlePwdChange(e.target.value)}
-                                            />
-                                             <InputGroup.Text id="pwdGroup" onClick={() => setNewPwdState(!newPwdState)}>
-                                                {
-                                                    newPwdState ?
-                                                    <img src="./assets/images/eye.svg" alt="eye"/>
-                                                    :
-                                                    <img src="./assets/images/eye-off.svg" alt="eye-off"/>
-                                                }
-                                                <span className="input-group-texts">
-                                                    {newPwdState ?
-                                                        <span>Show</span>
+                                                    <span className="input-group-texts">
+                                                        {currentPwdState ?
+                                                            <span>Show</span>
+                                                            :
+                                                            <span>Hide</span>
+                                                        }
+                                                    </span>
+                                                </InputGroup.Text>
+                                            </InputGroup>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col lg={12}>
+                                        <div className='mb-4'>
+                                            <Form.Label>New password</Form.Label>
+                                            <InputGroup>
+                                                <FormControl
+                                                    placeholder="New password"
+                                                    type={newPwdState ? "password" : "text"}
+                                                    value={newPwd}
+                                                    onChange={(e) => handlePwdChange(e.target.value)}
+                                                />
+                                                <InputGroup.Text id="pwdGroup" onClick={() => setNewPwdState(!newPwdState)}>
+                                                    {
+                                                        newPwdState ?
+                                                        <img src="./assets/images/eye.svg" alt="eye"/>
                                                         :
-                                                        <span>Hide</span>
+                                                        <img src="./assets/images/eye-off.svg" alt="eye-off"/>
                                                     }
-                                                </span>
-                                            </InputGroup.Text>
-                                        </InputGroup>
-                                    </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col lg={12}>
-                                    <div className='mb-4'>
-                                        <div className="verification-check">
-                                            <div className="verification-icon">
-                                                {
-                                                    !pwdLengthCheck ?
-                                                    <img src="./assets/images/unverified-check.svg" alt="check-grey"/>
-                                                    :
-                                                    <img src="./assets/images/verified-check.svg" alt="check-green"/>
-                                                }
-                                            </div>
-                                            <div className='verification-text'>At least 6 characters</div>
+                                                    <span className="input-group-texts">
+                                                        {newPwdState ?
+                                                            <span>Show</span>
+                                                            :
+                                                            <span>Hide</span>
+                                                        }
+                                                    </span>
+                                                </InputGroup.Text>
+                                            </InputGroup>
                                         </div>
-                                        <div className="verification-check">
-                                            <div className="verification-icon">
-                                                {
-                                                    !numberPwdCheck ?
-                                                    <img src="./assets/images/unverified-check.svg" alt="check-grey"/>
-                                                    :
-                                                    <img src="./assets/images/verified-check.svg" alt="check-green"/>
-                                                }
-                                            </div>
-                                            <div className='verification-text'>One number</div>
-                                        </div>
-                                        <div className="verification-check">
-                                            <div className="verification-icon">
-                                                {
-                                                    !symbolPwdCheck ?
-                                                    <img src="./assets/images/unverified-check.svg" alt="check-grey"/>
-                                                    :
-                                                    <img src="./assets/images/verified-check.svg" alt="check-green"/>
-                                                }
-                                            </div>
-                                            <div className='verification-text'>One symbol</div>
-                                        </div>
-                                    </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <Col lg={12}>
-                                    <div className='mb-4'>
-                                        <Form.Label>Confirm new password</Form.Label>
-                                        <InputGroup>
-                                            <FormControl
-                                                placeholder="Confirm new password"
-                                                type={confirmNewPwdState ? "password" : "text"}
-                                                value={confirmNewPwd}
-                                                onChange={(e) => setConfirmNewPwd(e.target.value)}
-                                            />
-                                             <InputGroup.Text id="pwdGroup" onClick={() => setConfirmNewPwdState(!confirmNewPwdState)}>
-                                                {
-                                                    confirmNewPwdState ?
-                                                    <img src="./assets/images/eye.svg" alt="eye"/>
-                                                    :
-                                                    <img src="./assets/images/eye-off.svg" alt="eye-off"/>
-                                                }
-                                                <span className="input-group-texts">
-                                                    {confirmNewPwdState ?
-                                                        <span>Show</span>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col lg={12}>
+                                        <div className='mb-4'>
+                                            <div className="verification-check">
+                                                <div className="verification-icon">
+                                                    {
+                                                        !pwdLengthCheck ?
+                                                        <img src="./assets/images/unverified-check.svg" alt="check-grey"/>
                                                         :
-                                                        <span>Hide</span>
+                                                        <img src="./assets/images/verified-check.svg" alt="check-green"/>
                                                     }
-                                                </span>
-                                            </InputGroup.Text>
-                                        </InputGroup>
+                                                </div>
+                                                <div className='verification-text'>At least 6 characters</div>
+                                            </div>
+                                            <div className="verification-check">
+                                                <div className="verification-icon">
+                                                    {
+                                                        !numberPwdCheck ?
+                                                        <img src="./assets/images/unverified-check.svg" alt="check-grey"/>
+                                                        :
+                                                        <img src="./assets/images/verified-check.svg" alt="check-green"/>
+                                                    }
+                                                </div>
+                                                <div className='verification-text'>One number</div>
+                                            </div>
+                                            <div className="verification-check">
+                                                <div className="verification-icon">
+                                                    {
+                                                        !symbolPwdCheck ?
+                                                        <img src="./assets/images/unverified-check.svg" alt="check-grey"/>
+                                                        :
+                                                        <img src="./assets/images/verified-check.svg" alt="check-green"/>
+                                                    }
+                                                </div>
+                                                <div className='verification-text'>One symbol</div>
+                                            </div>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <Col lg={12}>
+                                        <div className='mb-4'>
+                                            <Form.Label>Confirm new password</Form.Label>
+                                            <InputGroup>
+                                                <FormControl
+                                                    placeholder="Confirm new password"
+                                                    type={confirmNewPwdState ? "password" : "text"}
+                                                    value={confirmNewPwd}
+                                                    onChange={(e) => setConfirmNewPwd(e.target.value)}
+                                                />
+                                                <InputGroup.Text id="pwdGroup" onClick={() => setConfirmNewPwdState(!confirmNewPwdState)}>
+                                                    {
+                                                        confirmNewPwdState ?
+                                                        <img src="./assets/images/eye.svg" alt="eye"/>
+                                                        :
+                                                        <img src="./assets/images/eye-off.svg" alt="eye-off"/>
+                                                    }
+                                                    <span className="input-group-texts">
+                                                        {confirmNewPwdState ?
+                                                            <span>Show</span>
+                                                            :
+                                                            <span>Hide</span>
+                                                        }
+                                                    </span>
+                                                </InputGroup.Text>
+                                            </InputGroup>
+                                        </div>
+                                    </Col>
+                                </Row>
+                                <Row>
+                                    <div className='profile-edit-btns'>
+                                        <button type="button" className='cancel-btn' onClick={() => setIsEdit(false)}>Cancel</button>
+                                        <button type="button" className='save-btn' onClick={onsubmit} disabled={isSubmitting}>
+                                        {
+                                            isSubmitting ?
+                                            <Spinner animation="border" size="sm" />
+                                            :
+                                            "Save"
+                                        }
+                                        </button>
                                     </div>
-                                </Col>
-                            </Row>
-                            <Row>
-                                <div className='profile-edit-btns'>
-                                    <button type="button" className='cancel-btn' onClick={() => setIsEdit(false)}>Cancel</button>
-                                    <button type="button" className='save-btn' onClick={onsubmit} disabled={isSubmitting}>
-                                    {
-                                        isSubmitting ?
-                                        <Spinner animation="border" size="sm" />
-                                        :
-                                        "Save"
-                                    }
-                                    </button>
-                                </div>
-                            </Row>
-                            </>
-                            }
+                                </Row>
+                                </>
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -13,14 +13,15 @@ const PaymentProcessingModal = (props) => {
               const res = await recharge_meter(props.tokenObject)
               if(res.status === 200 && res.data.response !== null){
                 props.setResponseObj(res.data.response)
-                props.setIsTranxSuccessful(true)
+                props.setShowError(false)
               }
               else{
-                props.setIsTranxSuccessful(false)
+                props.setError("An Error Occured")
+                props.setShowError(true)
               }
             }
             catch(err){
-              serviceError(err, props.setError, props.setIsTranxSuccessful)
+              serviceError(err, props.setError, props.setShowError)
             }
             finally{
               props.setSteps(4)

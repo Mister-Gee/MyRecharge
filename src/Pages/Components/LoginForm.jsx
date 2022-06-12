@@ -127,7 +127,9 @@ const onsubmit = async() => {
                     </InputGroup.Text>
                 </InputGroup>
             </Form.Group>
-
+            <div className='auth-additional-link2'>
+                <span onClick={() => setAuthState("reset")}>Forget Password?</span>
+            </div>
             <Form.Group className="mb-3 form-group">
                 <button className='auth-btn'  type="button" onClick={onsubmit} disabled={isSubmitting}>
                     {
@@ -139,9 +141,6 @@ const onsubmit = async() => {
                 </button>
             </Form.Group>
         </Form>
-        <div className='auth-additional-link2'>
-            <span onClick={() => setAuthState("reset")}>Forget Password?</span>
-        </div>
         <div className='auth-additional-link'>
             Don't have an account? <span onClick={() => setAuthState("register")}>Register</span>
         </div>

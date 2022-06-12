@@ -75,14 +75,14 @@ const Landing = () => {
     <div className='landing-bg'>
         <div className='landing-bg-wrapper'>
             <div className='landing-txt'>
-                <div className='landing-txt-header'>Efficient electricity payment anytime </div>
+                <div className='landing-txt-header'>Efficient <br /> electricity <br />payment anytime </div>
                 <div className='landing-txt-sub-header'>Enter your phone number to purchase your token </div>
                 <div className='landing-txt-textbox'>
                     <Form.Group className="mb-3">
                         <Form.Control 
                             type='text'
                             maxLength={13}
-                            placeholder="0000-000-0000" 
+                            placeholder="+234" 
                             value={phoneNumber}
                             onChange={(e) => setPhoneNumber(e.target.value)}
                             id="phoneNumber"
@@ -98,21 +98,21 @@ const Landing = () => {
                 }
                 <div className='landing-txt-btn'>
                     <button 
-                        className='secondary-button btn' 
+                        className='' 
                         onClick={onSubmit} 
                         disabled={isSubmitting}
                     >
                         {isSubmitting ?
                             <Spinner animation="border" size="sm" />
                             :
-                            "Buy Token"
+                            "Buy electricty token"
                         }
                     </button>
                 </div>
             </div>
-            <div className='landing-img'>
+            {/* <div className='landing-img'>
                 <img src="./assets/images/landing-image.png" alt="my recharge"/>
-            </div>
+            </div> */}
         </div>
     </div>
   )

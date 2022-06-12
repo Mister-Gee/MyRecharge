@@ -61,7 +61,7 @@ const TransactionHistory = () => {
                     detail={transactionModalDetail}
                 />
                 <Breadcrumb 
-                    icon="credit-card"
+                    icon="credit-card-new"
                     title="Transactions"
                     isSearch={true}
                     searchPlaceholder="Search transactions"
@@ -72,35 +72,37 @@ const TransactionHistory = () => {
                 transactionList.length < 1 ?
                 <div className="no-data-found">No Transaction History</div>
                 :
-                <div className='table-container'>
-                    <Table responsive="sm">
-                        <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>Meter Number</th>
-                            <th>Amount</th>
-                            <th>Number of Units</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {transactionList.map(data => (
-                            <tr key={data.paymentId}>
-                                <td>{data.dateTimeStamp}</td>
-                                <td>{data.meterNumber}</td>
-                                <td>₦{monetizeAmount(data.rechargeAmount)}</td>
-                                <td>{data.numberOfUnits}</td>
-                                <td className={data.status ? "" : "failed"}>{data.status ? "Successful" : "Failed"}</td>
-                                <td>
-                                    <button type='button' onClick={() => handleTransactionDetails(data.status, data)}>
-                                        Recharge Details
-                                    </button>
-                                </td>
+                <div className='card'>
+                    <div className='table-container'>
+                        <Table responsive="sm">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Meter Number</th>
+                                <th>Amount</th>
+                                <th>Number of Units</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
-                        ))}
-                        </tbody>
-                    </Table>
+                            </thead>
+                            <tbody>
+                            {transactionList.map(data => (
+                                <tr key={data.paymentId}>
+                                    <td>{data.dateTimeStamp}</td>
+                                    <td>{data.meterNumber}</td>
+                                    <td>₦{monetizeAmount(data.rechargeAmount)}</td>
+                                    <td>{data.numberOfUnits}</td>
+                                    <td className={data.status ? "success" : "failed"}><span>{data.status ? "Successful" : "Failed"}</span></td>
+                                    <td>
+                                        <button type='button' onClick={() => handleTransactionDetails(data.status, data)}>
+                                            Recharge Details
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
                 }
             </div>

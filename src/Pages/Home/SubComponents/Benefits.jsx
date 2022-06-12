@@ -12,7 +12,7 @@ const Benefits = () => {
                 body="You can purchase your meter token instantly and with zero stress."
             />
             <BenefitDetail 
-                icon="shieldIcon"
+                icon="security"
                 title="Highly Secured"
                 body="Payment is only completed after an OTP (One Time Password) verification."
             />
@@ -32,9 +32,9 @@ const Benefits = () => {
                 body="Our customer care support are always availble to have your issue resolved timely."
             />
             <BenefitDetail 
-                icon="refundIcon"
-                title="Instant Refunds"
-                body="You get an instant refund whenever a failed or incomplete transaction occurs."
+                icon="track"
+                title="Track Meter Payments"
+                body="Customers are now able to track monthly electricity usage to manage their power consumption."
             />
         </div>
     </div>

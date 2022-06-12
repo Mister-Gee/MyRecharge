@@ -40,9 +40,9 @@ const Header = ({handleLogin}) => {
             <img src='./assets/images/logo.svg' alt="My Recharge"/>
         </div>
         <div className='nav-link-section'>
-            <div className='support-flag'>
+            {/* <div className='support-flag'>
                 24 Hour Support 0908-749-3044
-            </div>
+            </div> */}
             <div className='mr-nav-links'>
                 {isAuth && <NavLink to="/buy-token" className={(navData) => navData.isActive && "active-link"}>Buy Token</NavLink>}
                {isAuth && <NavLink to="/transaction-history" className={(navData) => navData.isActive && "active-link"}>Transaction History</NavLink>}

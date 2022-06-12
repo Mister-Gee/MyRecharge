@@ -54,35 +54,37 @@ const MyMeters = () => {
                 meterList.length < 1 ?
                 <div className="no-data-found">No Meter History</div>
                 :
-                <div className='table-container'>
-                    <Table responsive="sm">
-                        <thead>
-                        <tr>
-                            <th>Meter Number</th>
-                            <th>Name</th>
-                            <th>Disco</th>
-                            <th>Address</th>
-                            <th>Last Purchased</th>
-                            <th>Action</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {meterList.map(data => (
-                            <tr key={data.meterId}>
-                                <td>{data.meterNumber}</td>
-                                <td>{data.meterName}</td>
-                                <td>{data.meterDisco}</td>
-                                <td>{data.meterAddress}</td>
-                                <td> {data.lastPurchaseDate}</td>
-                                <td> 
-                                    <span>
-                                        <span className="iconify delete" data-icon="ep:delete"></span>
-                                    </span>
-                                </td>
+                <div className='card'>
+                    <div className='table-container'>
+                        <Table responsive="sm">
+                            <thead>
+                            <tr>
+                                <th>Meter Number</th>
+                                <th>Name</th>
+                                <th>Disco</th>
+                                <th>Address</th>
+                                <th>Last Purchased</th>
+                                <th>Action</th>
                             </tr>
-                        ))}
-                        </tbody>
-                    </Table>
+                            </thead>
+                            <tbody>
+                            {meterList.map(data => (
+                                <tr key={data.meterId}>
+                                    <td>{data.meterNumber}</td>
+                                    <td>{data.meterName}</td>
+                                    <td>{data.meterDisco}</td>
+                                    <td>{data.meterAddress}</td>
+                                    <td> {data.lastPurchaseDate}</td>
+                                    <td> 
+                                        <span>
+                                            <span className="iconify delete" data-icon="ep:delete"></span>
+                                        </span>
+                                    </td>
+                                </tr>
+                            ))}
+                            </tbody>
+                        </Table>
+                    </div>
                 </div>
                 }
             </div>

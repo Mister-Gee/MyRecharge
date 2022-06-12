@@ -17,9 +17,10 @@ const BuyToken = () => {
     const [isStateDiscosLoading, setIsStateDiscosLoading] = useState(false)
     const [serviceCharge, setServiceCharge] = useState(0)
     const [error, setError] = useState("")
+    const [showError, setShowError] = useState(false)
+
 
     const [responseObj, setResponseObj] = useState({})
-    const [isTranxSuccessful, setIsTranxSuccessful] = useState(false)
 
     // Form State
     const [tokenObject, setTokenObject] = useState({
@@ -82,6 +83,7 @@ const BuyToken = () => {
                 <SideNav />
             </div>
             <div className='content'>
+            <div className="card">
                 <PaymentProcessingModal 
                     show={modalShow}
                     setSteps={handleSummarySteps}
@@ -89,26 +91,37 @@ const BuyToken = () => {
                     tokenObject={tokenObject}
                     steps={steps}
                     setResponseObj={setResponseObj}
-                    setIsTranxSuccessful={setIsTranxSuccessful}
                     setError={setError}
+                    setShowError={setShowError}
                 />
-                <div className='token-process'>
-                    <Arrow 
-                        isActive={steps === 1 ? true : false}
-                        content="1. Buy Token"
-                    />
-                    <Arrow 
-                        isActive={steps === 2 ? true : false}
-                        content="2. Summary"
-                    />
-                    <Arrow 
-                        isActive={steps === 3 ? true : false}
-                        content="3. Make Payment"
-                    />
-                    <Arrow 
-                        isActive={steps === 4 ? true : false}
-                        content="4. View Receipt"
-                    />
+                <div className='token-process-wrapper'>
+                    <div className='token-process'>
+                        <Arrow 
+                            isActive={steps === 1 ? true : false}
+                            content="Buy Token"
+                            step={"01"}
+                            isCompleted={steps > 1 ? true : false}
+                        />
+                        <Arrow 
+                            isActive={steps === 2 ? true : false}
+                            content="Summary"
+                            step={"02"}
+                            isCompleted={steps > 2 ? true : false}
+
+                        />
+                        <Arrow 
+                            isActive={steps === 3 ? true : false}
+                            content="Make Payment"
+                            step={"03"}
+                            isCompleted={steps > 3 ? true : false}
+                        />
+                        <Arrow 
+                            isActive={steps === 4 ? true : false}
+                            content="View Receipt"
+                            step={"04"}
+                            isCompleted={steps > 4 ? true : false}
+                        />
+                    </div>
                 </div>
                 <div className='token-form'>
                     {steps === 1 ?
@@ -134,11 +147,12 @@ const BuyToken = () => {
                     steps === 4 &&
                     <Receipt 
                         receipt={responseObj}
-                        isTranxSuccessful={isTranxSuccessful}
                         setSteps={setSteps}
                         error={error}
+                        showError={showError}
                     />
                     }
+                </div>
                 </div>
             </div>
         </div>
