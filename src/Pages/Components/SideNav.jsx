@@ -22,8 +22,8 @@ const SideNav = () => {
         </div>
         <div className='nav-link-wrapper'>
             <NavLink to="/my-meter" className={(navData) => navData.isActive && "active-link active-link-border"}>
-                <span className='mm-nav-icon'>
-                    <img src="./assets/images/transaction-history.svg" alt="ic" />
+                <span className='side-nav-icon'>
+                <span className="iconify" data-icon="carbon:list-dropdown" style={{transform: "rotate(180deg)"}}></span>
                 </span>    
                 My Meters
             </NavLink>

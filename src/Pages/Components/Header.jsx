@@ -51,7 +51,7 @@ const Header = ({handleLogin}) => {
                {!isAuth && <div className="loginBtn btn" onClick={handleLogin}>Login</div>}
                 {/* {!isAuth && <NavLink to="/buy-token" className="secondary-button btn">Buy Token</NavLink>} */}
                 {isAuth && <Dropdown className='dropdown-ml'>
-                    <Dropdown.Toggle id="dropdown-basic" className="primary-button btn dropdown-btn">
+                    <Dropdown.Toggle id="dropdown-basic" className="primary-button btn dropdown-btn header-dropdown">
                         {stateManager.user.phoneNumber.get()}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
