@@ -34,32 +34,18 @@ const TestimonialSlider = () => {
             containerClass="testimonial-c-carousel-container"
         >
             <TestimonialCard 
-                title="Incredible Experience"
-                body=" We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful"
-                image="user.png"
-                name="Jane Cooper"
-                position="CEO, ABC Cooperation"
+                title=""
+                body={{__html: "It is easy and reliable,literally I don't bother when my power goes off if it is weekends or not. <br /> <br/> The seamless purchase of power plus the receipt that I am able to generate at my place of work for proper documentation..."}}
+                image="emoji1.svg"
+                name="Glory"
+                position="Cross River"
             />
             <TestimonialCard 
-                title="Wonderful Experience"
-                body=" We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful"
-                image="user.png"
-                name="James Bond"
-                position="Founder, IJK Cooperation"
-            />
-            <TestimonialCard 
-                title="Splendid Experience"
-                body=" We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful"
-                image="user.png"
-                name="Mary Doe"
-                position="MD, STU Cooperation"
-            />
-            <TestimonialCard 
-                title="Incredible Experience"
-                body=" We had an incredible experience working with Landify and were impressed they made such a big difference in only three weeks. Our team is so grateful for the wonderful"
-                image="user.png"
-                name="Shang Chi"
-                position="CTO, XYZ Cooperation"
+                title=""
+                body={{__html: "Oh how nice! The thing I like the most about myrecharge.ng is the speed with which the transactions are performed online.. <br /> <br />Another thing worthy of note is their user friendly site and the customer care attention they provide us second to none.. I recommend myrecharge.ng!!"}}
+                image="emoji2.svg"
+                name="Ubong"
+                position="Akwa Ibom"
             />
         </Carousel>
     </div>

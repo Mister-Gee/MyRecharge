@@ -5,6 +5,7 @@ import useStateManager from '../../../utilities/StateManager';
 import { validate_customer } from '../../../Services/rechargeService';
 import { Spinner } from 'react-bootstrap';
 import { errorAlert } from '../../Components/SweetAlerts';
+import jwt_encode from "jwt-encode";
 
 const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject, setTokenObject}) => {
     const [state, setState] = useState({})
@@ -13,18 +14,25 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
     const stateManager = useStateManager()
 
     useEffect(() => {
+        var previousState = stateDiscos.find(x => x.stateID === tokenObject.stateId);
+        setState(previousState)
+    }, [tokenObject.stateId, isStateDiscosLoading])
+
+    useEffect(() => {
         setTokenObject(prevState => ({
             ...prevState,
             phoneNumber: stateManager.user.phoneNumber.get()
          }));
 
-        if(stateManager.user.emailAddress.get() !== ""){
-            setTokenObject(prevState => ({
-                ...prevState,
-                emailAddress: stateManager.user.emailAddress.get()
-             })); 
+        if(tokenObject.emailAddress === ""){
+            if(stateManager.user.emailAddress.get() !== ""){
+                setTokenObject(prevState => ({
+                    ...prevState,
+                    emailAddress: stateManager.user.emailAddress.get()
+                 })); 
+            }    
         }
-
+        
         if(stateManager.user.fullname.get() !== ""){
             setTokenObject(prevState => ({
                 ...prevState,
@@ -45,7 +53,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
         const { name, value } = e.target;
         setTokenObject(prevState => ({
             ...prevState,
-            [name]: name === "amount" ? parseInt(value === "" || value < 1000 ? "1000" : Math.abs(value)) : value
+            [name]: name === "amount" ? parseInt(value === "" || value < 100 ? "100" : Math.abs(value)) : value
         }));
     };
     
@@ -57,7 +65,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
     }
 
     const onsubmit = async() => {
-        if(tokenObject.amount !== "" && tokenObject.amount > 999 ){
+        if(tokenObject.amount !== "" && tokenObject.amount > 99 ){
             if(tokenObject.emailAddress !== ""){
                 if(tokenObject.meterNo !== ""){
                     if(tokenObject.meterType !== ""){
@@ -65,6 +73,9 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                             if(tokenObject.stateId){
                                 try{
                                     setIsSubmitting(true)
+                                    const secret = 'myrecharge-byt-encoded';
+                                    const encodedPayload = jwt_encode(tokenObject, secret)
+                                    localStorage.setItem("mrep", encodedPayload)
                                     let payload = {
                                         "accountType": tokenObject.meterType,
                                         "customerEmail": tokenObject.emailAddress,
@@ -218,14 +229,16 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
             </Form.Group>
 
             <Form.Group className="form-group">
-                <button className='btf-btn'  type="button" onClick={onsubmit} disabled={isSubmitting}>
-                    {
-                        isSubmitting ?
-                        <Spinner animation="border" size="sm" />
-                        :
-                        "Continue"
-                    }
-                </button>
+                <div className='btn-wrapper'>
+                    <button className='btf-btn'  type="button" onClick={onsubmit} disabled={isSubmitting}>
+                        {
+                            isSubmitting ?
+                            <Spinner animation="border" size="sm" />
+                            :
+                            "Continue"
+                        }
+                    </button>
+                </div>
             </Form.Group>
         </Form>
     </div>

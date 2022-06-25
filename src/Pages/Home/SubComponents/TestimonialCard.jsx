@@ -5,8 +5,8 @@ const TestimonialCard = ({title, body, image, name, position}) => {
     <div className='testimonial-card'>
         <div className='testimonial-bubble'>
             <div className='testimonial-bubble-header'>{title}</div>
-            <div className='testimonial-bubble-body'>
-               {body}
+            <div className='testimonial-bubble-body' dangerouslySetInnerHTML={body}>
+               {/* {body} */}
             </div>
             <div className='triangle'></div>
         </div>

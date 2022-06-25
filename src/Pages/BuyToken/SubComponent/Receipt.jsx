@@ -140,7 +140,7 @@ const Receipt = ({receipt, setSteps, error, showError }) => {
                 </div>
             </div>
         </div>
-        <div className='receipt-btn'>
+        <div className='receipt-btn btn-wrapper'>
             <Pdf targetRef={ref} filename="receipt.pdf">
                 {({toPdf}) => (
                     <button className='btf-btn mb-4' onClick={toPdf}  type="button">

@@ -7,6 +7,8 @@ import PaymentProcessingModal from './SubComponent/PaymentProcessingModal';
 import Summary from './SubComponent/Summary';
 import Receipt from './SubComponent/Receipt';
 import {get_payment_gateway_keys, get_states_discos} from '../../Services/rechargeService.js';
+import jwt_decode from 'jwt-decode';
+import ContentLoader from "../Components/ContentLoader"
 // import { serviceError } from '../../utilities/functions';
 
 
@@ -14,7 +16,7 @@ const BuyToken = () => {
     const [steps, setSteps] = useState(1)
     const [pubKey, setPubKey] = useState("")
     const [stateDiscos, setStateDiscos] = useState([])
-    const [isStateDiscosLoading, setIsStateDiscosLoading] = useState(false)
+    const [isStateDiscosLoading, setIsStateDiscosLoading] = useState(true)
     const [serviceCharge, setServiceCharge] = useState(0)
     const [error, setError] = useState("")
     const [showError, setShowError] = useState(false)
@@ -29,7 +31,7 @@ const BuyToken = () => {
         "phoneNumber": "",
         "emailAddress": "",
         "customerName": "",
-        "amount": 1000,
+        "amount": 100,
         "discountCode": "",
         "stateId": "",
         "transactionRef": "",
@@ -48,6 +50,14 @@ const BuyToken = () => {
             setSteps(val)
         }
     }
+
+    useEffect(() => {
+        var existingEncodedToken = localStorage.getItem("mrep")
+        if(existingEncodedToken){
+            var existingTokenObject = jwt_decode(existingEncodedToken);
+            setTokenObject(existingTokenObject)
+        }
+    },[])
 
     useEffect(() => {
         const fetch = async () => {
@@ -83,6 +93,9 @@ const BuyToken = () => {
                 <SideNav />
             </div>
             <div className='content'>
+            {isStateDiscosLoading ?
+                <ContentLoader />
+                :
             <div className="card">
                 <PaymentProcessingModal 
                     show={modalShow}
@@ -154,6 +167,7 @@ const BuyToken = () => {
                     }
                 </div>
                 </div>
+                }
             </div>
         </div>
     </Frame>

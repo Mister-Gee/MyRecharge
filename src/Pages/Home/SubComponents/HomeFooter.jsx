@@ -6,7 +6,7 @@ const HomeFooter = () => {
     <div className='home-footer'>
         <div className='company-detail'>
             <img class="footer-logo" src='./assets/images/footer-logo.svg' alt="My Recharge"/>
-            <div className='body'>Lorem ipsum dolor amet, consectetur adipiscing elit. Eget nisl nunc quam ac sed turpis volutpat. Cursus sed massa non nisi, placerat.</div>
+            <div className='body'>MyRecharge is an online electricity payment platform designed to ease the pressures of electricity users in today's busy world...read more</div>
             <div className='social-media-link'>
                 <a href="https://instagram.com/">
                     <img src="./assets/images/instagram.svg" alt='my recharge instagram'/>
@@ -35,8 +35,8 @@ const HomeFooter = () => {
         </div>
         <div className='hf-link'>
             <div className='title'>Reach us</div>
-            <a href="mailto:hello@myrecharge.ng"> <img src="./assets/images/email-icon.svg" alt="email icon" /> <span>hello@myrecharge.ng</span></a>
-            <a href="call:+91 98765 43210"> <img src="./assets/images/phone-icon.svg" alt="email icon" /> <span>+91 98765 43210</span></a>
+            <a href="mailto:info@myrecharge.ng"> <img src="./assets/images/email-icon.svg" alt="email icon" /> <span>info@myrecharge.ng</span></a>
+            <a href="call:+234 916 854 5835"> <img src="./assets/images/phone-icon.svg" alt="email icon" /> <span>+234 916 854 5835</span></a>
         </div>
     </div>
   )

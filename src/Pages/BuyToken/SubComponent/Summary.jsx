@@ -143,7 +143,7 @@ const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey, 
                 <div className='key'>NGN {monetizeAmount(discount)}</div>
             </div>
         </div>
-        <div className='summary-btn'>
+        <div className='summary-btn btn-wrapper'>
             <button className='btf-btn'  type="button" onClick={() => initializePayment(onPaymentSuccess, onPaymentClose)}>
                 Payment NGN {monetizeAmount(tokenObject.amount + serviceCharge)}
             </button>

@@ -7,6 +7,11 @@ import Settings from '../Pages/Settings/Settings';
 import TransactionHistory from '../Pages/TransactionHistory/TransactionHistory';
 import ProtectedRoute from './ProtectedRoute';
 import { getUserToken } from '../utilities/userTokens';
+import FAQ from '../Pages/FAQ/FAQ';
+import ContactUs from '../Pages/ContactUs/ContactUs';
+import PrivacyPolicy from '../Pages/PrivacyPolicy/PrivacyPolicy';
+import TermsAndContions from '../Pages/TermsAndConditions/TermsAndContions';
+import AboutUs from '../Pages/AboutUs/AboutUs';
 
 
 const Routes = () => {
@@ -14,6 +19,12 @@ const Routes = () => {
   return (
     <Switch>
         <Route index path="/" element={!token ? <Home /> : <Navigate to="buy-token" replace/> } />
+        <Route index path="/faq" element={<FAQ />} />
+        <Route index path="/contact-us" element={<ContactUs />} />
+        <Route index path="/about-us" element={<AboutUs />} />
+        <Route index path="/Privacy-policy" element={<PrivacyPolicy />} />
+        <Route index path="/terms-and-conditions" element={<TermsAndContions />} />
+        
         <Route path="/buy-token" element={
           <ProtectedRoute>
             <BuyToken />
