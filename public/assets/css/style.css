@@ -357,6 +357,7 @@ header{
 }
 
 header .logo-container{
+    cursor: pointer;
     /* padding-top: 26px; */
     /* padding-bottom: 16px; */
 }
@@ -2625,6 +2626,35 @@ footer .links a:hover{
     font-size: 15px !important;
 }
 
+.logout-link-section{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+}
+
+.logout-link-section .logout-link{
+    cursor: pointer;
+}
+
+.logout-link-section .logout-link .iconify{
+    font-size: 16px;
+    margin-right: 11px;
+    color: #FFFFFF;
+}
+
+.logout-link-section .logout-link .logout-text{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 38px;
+    letter-spacing: 0.2px;
+    color: #FFFFFF;
+}
+
 @media (max-width: 426px) {
     .Menu .mobile-nav-link-section{
         padding: 20px 16px;
@@ -2636,7 +2666,7 @@ footer .links a:hover{
 
     .Menu .mobile-nav-link-section .mn-authlinks, 
     .Menu .mobile-nav-link-section .mn-navlinks {
-        margin-top: 20px;
+        margin-top: 5px;
     }
 
     
@@ -2649,7 +2679,7 @@ footer .links a:hover{
     }
 
     .Menu .mobile-nav-link-section .mn-navlinks a{
-        padding: 15px;
+        padding: 10px !important;
         padding-left: 19px;
         font-size: 14px;
     }

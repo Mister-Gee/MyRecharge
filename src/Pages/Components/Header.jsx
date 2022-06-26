@@ -1,5 +1,5 @@
 import React, {useState, useContext, useEffect} from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate  } from 'react-router-dom';
 import { Dropdown } from 'react-bootstrap';
 import { MenuContext } from "react-flexible-sliding-menu";
 import { getUserToken } from '../../utilities/userTokens';
@@ -8,11 +8,16 @@ import { logout, getUserFromLocalStorage } from '../../utilities/userTokens';
 
 
 const Header = ({handleLogin}) => {
+    const navigate = useNavigate()
     const token = getUserToken()
     const stateManager = useStateManager()
     
     const { toggleMenu } = useContext(MenuContext);
     const [isAuth, setIsAuth] = useState(false)
+
+    const goToRoot = () => {
+        navigate("/")
+    }
 
     useEffect(() => {
         if(token){
@@ -37,7 +42,7 @@ const Header = ({handleLogin}) => {
   return (
     <header>
         <div className='logo-container'>
-            <img src='./assets/images/logo.svg' alt="My Recharge"/>
+            <img src='./assets/images/logo.svg' alt="My Recharge" onClick={goToRoot}/>
         </div>
         <div className='nav-link-section'>
             {/* <div className='support-flag'>

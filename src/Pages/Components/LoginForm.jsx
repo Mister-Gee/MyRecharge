@@ -10,7 +10,7 @@ import {useNavigate} from 'react-router-dom';
 const LoginForm = ({setAuthState}) => {
     let navigate = useNavigate()
     const [isSubmitting, setIsSubmitting] = useState(false)
-    const [error, setError] = useState(false)
+    const [error, setError] = useState("")
     const [errorShow, setErrorShow] = useState(false)
     const [isSuccess, setIsSuccess] = useState(false)
     const [pwdState, setPwdState] = useState(true)

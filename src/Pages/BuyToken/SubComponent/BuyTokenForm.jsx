@@ -6,9 +6,12 @@ import { validate_customer } from '../../../Services/rechargeService';
 import { Spinner } from 'react-bootstrap';
 import { errorAlert } from '../../Components/SweetAlerts';
 import jwt_encode from "jwt-encode";
+import { serviceError } from '../../../utilities/functions';
 
 const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject, setTokenObject}) => {
     const [state, setState] = useState({})
+    const [error, setError] = useState("")
+    const [errorShow, setErrorShow] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
 
     const stateManager = useStateManager()
@@ -101,7 +104,8 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                                     }
                                 }
                                 catch(err){
-                                    errorAlert("Customer Validation Failed")
+                                    serviceError(err, setError, setErrorShow)
+                                    errorAlert(error)
                                     setIsSubmitting(false)
                                 }
                             }
@@ -147,7 +151,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                 </div>
                 <span className="add-new-form-btn" onClick={handleClear}>
                     <span className="iconify" data-icon="bi:plus"></span>
-                    <span>Add New</span>
+                    <span>Clear Meter</span>
                 </span>
             </Form.Group>
 
@@ -185,9 +189,9 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                     value={tokenObject.meterType}
                     onChange={handleChange}
                 >
-                    <option>Meter Type</option>
+                    <option disabled>Meter Type</option>
                     <option value="prepaid">Prepaid</option>
-                    <option value="postpaid">Postpaid</option>
+                    {/* <option value="postpaid">Postpaid</option> */}
                 </Form.Select>
             </Form.Group>
 

@@ -29,7 +29,7 @@ const Benefits = () => {
             <BenefitDetail 
                 icon="supportIcon"
                 title="24hours Customer Support"
-                body="Our customer care support are always availble to have your issue resolved timely."
+                body="Our customer care support are always available to have your issue resolved timely."
             />
             <BenefitDetail 
                 icon="track"

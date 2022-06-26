@@ -123,6 +123,14 @@ const MobileSideNav = () => {
                     <span className="iconify link-caret" data-icon="ph:caret-right"></span>
                 </NavLink>
             </div>
+            {isAuth &&
+            <div className="logout-link-section mt-5">
+                <div className="logout-link" onClick={logout}>
+                    <span className="iconify" data-icon="lucide:log-in" style={{transform: "rotate(180deg)"}}></span>
+                    <span className="logout-text">Logout</span>
+                </div>
+            </div>
+            }
         </div>
     </div>
   )

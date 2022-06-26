@@ -5,6 +5,7 @@ import { serviceError } from '../../utilities/functions';
 import { customer_profile_update } from '../../Services/accountService';
 import { Spinner } from 'react-bootstrap';
 import { setUserToken } from '../../utilities/userTokens';
+import { errorAlert, successAlert } from '../Components/SweetAlerts';
 
 
 const ProfileEdit = ({setIsEdit}) => {
@@ -43,27 +44,24 @@ const ProfileEdit = ({setIsEdit}) => {
 
                                 setUserToken(res.data.response.securityToken)
                                 setIsSubmitting(false)
-                                alert("User Profile Updated Succesfuly")
-                                console.log(stateManager.user.get())
-
+                                successAlert(res.data.message)
                             }
-                            
                         }
                         catch(err){
                             serviceError(err, setError, setErrorShow)
-                            alert(error)
+                            errorAlert(error)
                         }
                 }
                 else{
-                    alert("Email Cant be Empty")
+                    errorAlert("Email Cant be Empty")
                 }
             }
             else{
-                alert("Phone Number cant be Empty")
+                errorAlert("Phone Number cant be Empty")
             }
         }
         else{
-            alert("Full Name Cant be Empty")
+            errorAlert("Full Name Cant be Empty")
         }
     }
 

@@ -3,15 +3,24 @@ import Footer from './Footer';
 import Header from './Header';
 import HelmetTemplate from './HelmetTemplate';
 import { MenuContext } from "react-flexible-sliding-menu";
+import AuthModal from './AuthModal';
+import useStateManager from '../../utilities/StateManager';
 
 
-const Frame = ({title, children, handleLogin}) => {
+const Frame = ({title, children}) => {
+  const stateManager = useStateManager()
   const [isShowContact, setIsShowContact] = useState(false)
   const { closeMenu } = useContext(MenuContext);
 
   const handleContactShow = () =>{
     setIsShowContact(!isShowContact)
   }
+
+  const handleLogin = () => {
+    stateManager.authFormState.set("login")
+    stateManager.showAuthModal.set(true)
+  }
+
   return (
     <>
     <Header handleLogin={handleLogin}/>
@@ -19,6 +28,12 @@ const Frame = ({title, children, handleLogin}) => {
       <div onClick={closeMenu}>
         {children}
       </div>
+      <AuthModal 
+          show={stateManager.showAuthModal.get()}
+          handleClose={() => stateManager.showAuthModal.set(false)}
+          authState={stateManager.authFormState.get()}
+          setAuthState={stateManager.authFormState.set}
+      />
       <div className="floating-component">
         {isShowContact &&
         <div className='c-bubble'>
