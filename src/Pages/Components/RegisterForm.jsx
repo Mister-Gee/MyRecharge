@@ -48,9 +48,9 @@ const RegisterForm = ({setAuthState}) => {
 
                                 setUserToken(res.data.response.securityToken)
                                 setIsSubmitting(false)
+                                stateManager.showAuthModal.set(false)
                                 navigate("/buy-token")
                             }
-                            
                         }
                         catch(err){
                             serviceError(err, setError, setErrorShow)

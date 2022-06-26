@@ -43,6 +43,7 @@ const onsubmit = async() => {
 
                         setUserToken(res.data.response.securityToken)
                         setIsSubmitting(false)
+                        stateManager.showAuthModal.set(false)
                         navigate("/buy-token")
                     }
                     
