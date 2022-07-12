@@ -5,8 +5,8 @@ const HomeFooter = () => {
   return (
     <div className='home-footer'>
         <div className='company-detail'>
-            <img class="footer-logo" src='./assets/images/footer-logo.svg' alt="My Recharge"/>
-            <div className='body'>MyRecharge is an online electricity payment platform designed to ease the pressures of electricity users in today's busy world...read more</div>
+            <img className="footer-logo" src='./assets/images/footer-logo.svg' alt="My Recharge"/>
+            <div className='body'>MyRecharge is an online electricity payment platform designed to ease the pressures of electricity users in today's busy world...<Link to="/about-us">Read More</Link></div>
             <div className='social-media-link'>
                 <a href="https://instagram.com/">
                     <img src="./assets/images/instagram.svg" alt='my recharge instagram'/>

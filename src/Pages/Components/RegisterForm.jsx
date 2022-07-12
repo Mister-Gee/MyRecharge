@@ -28,7 +28,7 @@ const RegisterForm = ({setAuthState}) => {
         const { name, value } = e.target;
         setRegUserDTO(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: name === "phoneNumber" ? value.replace(/\D/g, '') : value
         }));
     };
 

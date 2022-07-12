@@ -8,11 +8,13 @@ import { errorAlert } from '../../Components/SweetAlerts';
 import jwt_encode from "jwt-encode";
 import { serviceError } from '../../../utilities/functions';
 
-const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject, setTokenObject}) => {
+const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject, setTokenObject, refetchStateDiscos}) => {
     const [state, setState] = useState({})
     const [error, setError] = useState("")
     const [errorShow, setErrorShow] = useState(false)
     const [isSubmitting, setIsSubmitting] = useState(false)
+    const [isStateAvailable, setIsStateAvailable] = useState(true)
+
 
     const stateManager = useStateManager()
 
@@ -46,17 +48,25 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
 
     const handleStateSelect = (e) => {
         setState(e)
-        setTokenObject(prevState => ({
-            ...prevState,
-            stateId: e.stateID
-         }));
+        if(e.serviceAvailable){
+            setIsStateAvailable(true)
+            setTokenObject(prevState => ({
+                ...prevState,
+                stateId: e.stateID
+             }));
+        }
+        else{
+            setIsStateAvailable(false)
+            errorAlert(`Service Unavailable for ${e.stateName}-${e.discoName}(${e.discoCode}). Please try again in a moment`)
+        }
+        
     }
 
     const handleChange = e => {
         const { name, value } = e.target;
         setTokenObject(prevState => ({
             ...prevState,
-            [name]: name === "amount" ? parseInt(value === "" || value < 100 ? "100" : Math.abs(value)) : value
+            [name]: name === "amount" ? parseInt(Math.abs(value.replace(/\D/g, ''))) : value
         }));
     };
     
@@ -68,7 +78,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
     }
 
     const onsubmit = async() => {
-        if(tokenObject.amount !== "" && tokenObject.amount > 99 ){
+        if(tokenObject.amount !== "" && tokenObject.amount > 0 ){
             if(tokenObject.emailAddress !== ""){
                 if(tokenObject.meterNo !== ""){
                     if(tokenObject.meterType !== ""){
@@ -234,6 +244,7 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
 
             <Form.Group className="form-group">
                 <div className='btn-wrapper'>
+                    {isStateAvailable ? 
                     <button className='btf-btn'  type="button" onClick={onsubmit} disabled={isSubmitting}>
                         {
                             isSubmitting ?
@@ -242,6 +253,11 @@ const BuyTokenForm = ({setSteps, stateDiscos, isStateDiscosLoading, tokenObject,
                             "Continue"
                         }
                     </button>
+                    :
+                    <button className='btf-btn'  type="button" onClick={refetchStateDiscos}>
+                       Try Again
+                    </button>
+                    }
                 </div>
             </Form.Group>
         </Form>

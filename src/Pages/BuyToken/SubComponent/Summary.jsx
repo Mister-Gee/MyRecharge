@@ -4,9 +4,11 @@ import { recharge_discount } from '../../../Services/rechargeService';
 import { Spinner } from 'react-bootstrap';
 import {usePaystackPayment} from 'react-paystack';
 import useStateManager from '../../../utilities/StateManager';
+import {useNavigate} from "react-router-dom";
 
 
 const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey, serviceCharge, setServiceCharge}) => {
+    const navigate = useNavigate()
     const stateManager = useStateManager()
     const [discount, setDiscount] = useState(0)
 
@@ -147,7 +149,7 @@ const Summary = ({handleNext, tokenObject, setTokenObject, stateDiscos, pubKey, 
             <button className='btf-btn'  type="button" onClick={() => initializePayment(onPaymentSuccess, onPaymentClose)}>
                 Payment NGN {monetizeAmount(tokenObject.amount + serviceCharge)}
             </button>
-            <span className='edit-summary-btn' onClick={() => handleNext(1)}>
+            <span className='edit-summary-btn' onClick={() => window.location.reload()}>
                 <img src="./assets/images/edit.svg" alt="edit"/>
                 <span>Edit your recharge summary</span>
             </span>

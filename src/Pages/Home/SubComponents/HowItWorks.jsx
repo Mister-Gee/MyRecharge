@@ -8,26 +8,26 @@ const HowItWorks = () => {
         <div className='hiw-details'>
             <HowItWorkDetail 
                 number="1"
-                icon="enterMeter"
-                title="Enter Meter Number"
-                body="Enter your prepaid  meter number you wish to buy token for and select buy token."
+                icon="enterPhoneNumber"
+                title="Add Phone Number"
+                body="Select state, enter phone number, email, amount and select next to make payment."
             />
             <HowItWorkDetail 
                 number="2"
-                icon="enterPhoneNumber"
-                title="Enter Phone Number "
-                body="Select state, enter phone number, email, amount and select next to make payment."
+                icon="enterMeter"
+                title="Add Meter Number"
+                body="Enter your prepaid meter number you wish to buy token for and select buy token."
             />
             <HowItWorkDetail 
                 number="3"
                 icon="payment"
-                title="Payment"
+                title="Make Payment"
                 body="Select payment method you wish to use then follow prompts for payment. "
             />
             <HowItWorkDetail 
                 number="4"
                 icon="receiveToken"
-                title="Token received"
+                title="Get Token"
                 body="Once payment is successful, your generated receipt displays the token."
             />
         </div>

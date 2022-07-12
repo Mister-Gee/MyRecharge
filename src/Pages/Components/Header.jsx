@@ -49,10 +49,10 @@ const Header = ({handleLogin}) => {
                 24 Hour Support 0908-749-3044
             </div> */}
             <div className='mr-nav-links'>
-                {isAuth && <NavLink to="/buy-token" className={(navData) => navData.isActive && "active-link"}>Buy Token</NavLink>}
-               {isAuth && <NavLink to="/transaction-history" className={(navData) => navData.isActive && "active-link"}>Transaction History</NavLink>}
-                <NavLink to="/faq" className={(navData) => navData.isActive && "active-link"}>FAQ</NavLink>
-                <NavLink to="/contact-us" className={(navData) => navData.isActive && "active-link"}>Contact Us</NavLink>
+                {isAuth && <NavLink to="/buy-token" className={(navData) => navData.isActive ? "active-link" : ""}>Buy Token</NavLink>}
+               {isAuth && <NavLink to="/transaction-history" className={(navData) => navData.isActive ? "active-link" : ""}>Transaction History</NavLink>}
+                <NavLink to="/faq" className={(navData) => navData.isActive ? "active-link" : ""}>FAQ</NavLink>
+                <NavLink to="/contact-us" className={(navData) => navData.isActive ? "active-link" : ""}>Contact Us</NavLink>
                {!isAuth && <div className="loginBtn btn" onClick={handleLogin}>Login</div>}
                 {/* {!isAuth && <NavLink to="/buy-token" className="secondary-button btn">Buy Token</NavLink>} */}
                 {isAuth && <Dropdown className='dropdown-ml'>

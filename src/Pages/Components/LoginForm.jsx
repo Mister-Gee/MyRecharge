@@ -25,7 +25,7 @@ const LoginForm = ({setAuthState}) => {
         const { name, value } = e.target;
         setloginUserDTO(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: name === "emailOrPhone" ? value.replace(/\D/g, '') : value
         }));
     };
 

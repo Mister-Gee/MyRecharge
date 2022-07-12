@@ -8,7 +8,7 @@ import Summary from './SubComponent/Summary';
 import Receipt from './SubComponent/Receipt';
 import {get_payment_gateway_keys, get_states_discos} from '../../Services/rechargeService.js';
 import jwt_decode from 'jwt-decode';
-import ContentLoader from "../Components/ContentLoader"
+import ContentLoader from "../Components/ContentLoader";
 // import { serviceError } from '../../utilities/functions';
 
 
@@ -17,6 +17,7 @@ const BuyToken = () => {
     const [pubKey, setPubKey] = useState("")
     const [stateDiscos, setStateDiscos] = useState([])
     const [isStateDiscosLoading, setIsStateDiscosLoading] = useState(true)
+    const [stateDiscoTries, setStateDiscoTries] = useState(0)
     const [serviceCharge, setServiceCharge] = useState(0)
     const [error, setError] = useState("")
     const [showError, setShowError] = useState(false)
@@ -31,7 +32,7 @@ const BuyToken = () => {
         "phoneNumber": "",
         "emailAddress": "",
         "customerName": "",
-        "amount": 100,
+        "amount": 0,
         "discountCode": "",
         "stateId": "",
         "transactionRef": "",
@@ -44,6 +45,9 @@ const BuyToken = () => {
         if(val === 3){
             setSteps(val)
             setModalShow(true)
+        }
+        else if(val === 1){
+            setSteps(1)
         }
         else{
             setModalShow(false)
@@ -76,6 +80,7 @@ const BuyToken = () => {
     useEffect(() => {
         const fetch = async () => {
             try{
+                setIsStateDiscosLoading(true)
                 var res = await get_states_discos()
                 setStateDiscos(res.data.response)
                 setIsStateDiscosLoading(false)
@@ -85,7 +90,11 @@ const BuyToken = () => {
             }
         }
         fetch()
-    },[])
+    },[stateDiscoTries])
+
+    const refetchStateDiscos = () => {
+        setStateDiscoTries((prev) => prev + 1)
+    }
   return (
     <Frame title="Buy Token">
         <div className='wrapper'>
@@ -144,6 +153,7 @@ const BuyToken = () => {
                         isStateDiscosLoading={isStateDiscosLoading}
                         tokenObject={tokenObject}
                         setTokenObject={setTokenObject}
+                        refetchStateDiscos={refetchStateDiscos}
                     />
                     :
                     steps === 2 ?

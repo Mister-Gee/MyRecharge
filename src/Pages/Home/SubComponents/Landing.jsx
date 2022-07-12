@@ -71,6 +71,10 @@ const Landing = () => {
             }, 1500)  
         }
     }
+
+    const handlePhoneNumber = (e) => {
+        setPhoneNumber(e.replace(/\D/g, ''))
+    }
   return (
     <div className='landing-bg'>
         <div className='landing-bg-wrapper'>
@@ -82,9 +86,9 @@ const Landing = () => {
                         <Form.Control 
                             type='text'
                             maxLength={13}
-                            placeholder="+234" 
+                            placeholder="080" 
                             value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
+                            onChange={(e) => handlePhoneNumber(e.target.value)}
                             id="phoneNumber"
                             name="phoneNumber"
                         />
@@ -105,7 +109,7 @@ const Landing = () => {
                         {isSubmitting ?
                             <Spinner animation="border" size="sm" />
                             :
-                            "Buy electricty token"
+                            "Buy electricity token"
                         }
                     </button>
                 </div>

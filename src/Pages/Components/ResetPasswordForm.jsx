@@ -32,7 +32,7 @@ const ResetPasswordForm = ({setAuthState}) => {
         const { name, value } = e.target;
         setforgotPwdDTO(prevState => ({
             ...prevState,
-            [name]: value
+            [name]: value.replace(/\D/g, '')
         }));
     };
 
